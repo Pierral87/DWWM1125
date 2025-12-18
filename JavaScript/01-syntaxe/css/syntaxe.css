@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-bottom: 1px solid lightgray;
+}
+
+h2 {
+    padding: 20px;
+    background-color: midnightblue;
+    color: white;
+}
+
+#sommaire {background-color: cadetblue;}
+#chapitre1 {background-color: steelblue;}
+#chapitre2 {background-color: lightsteelblue;}

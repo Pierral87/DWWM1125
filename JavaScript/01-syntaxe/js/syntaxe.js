@@ -267,6 +267,155 @@ elementChapitre4.innerHTML += `Ola ${chaine}<br>`; // Grâce aux back quote (acc
 // -------------------------------------------------------------------------
 // -------------------------------------------------------------------------
 
+let elementChapitre5 = document.getElementById("contenuChapitre5");
+// La concaténation permet d'assembler des chaines de caractères les unes avec les autres 
+// Pour faire une concaténation on utilise le symbole "+" que l'on peut traduire par "suivi de"
+
+let prenom1 = "Pierre";
+let prenom2 = "Alexandre";
+
+elementChapitre5.innerHTML += "<hr>Bonjour " + prenom1 + "-" + prenom2 + ", bienvenue sur notre site <br>";
+
+// Ici l'affection prenom = "Alexandre" écrase la valeur d'origine prenom, ainsi je n'arrive pas à avoir Pierre-Alexandre
+let prenom = "Pierre";
+prenom = "Alexandre";
+console.log(prenom);
+
+// Ci dessous, je dis que prenom est égal à lui même concaténé d'une nouvelle valeur pour former Pierre-Alexandre
+prenom = "Pierre";
+prenom = prenom + "-Alexandre"; // Par contre je remarque une répétition à cette ligne
+console.log(prenom);
+// En programmation on fait toujours sorte d'avoir un code dit : DRY pour Dont Repeat Yourself, c'est à dire, on essaie d'éviter au maximum les répétitions
+
+// Ci dessous, une syntaxe raccourcie d'écriture pour la même opération, le += indiquant "je rajoute à la suite de la valeur existante"
+prenom = "Pierre";
+prenom += "-Alexandre"; // équivaut à prenom = prenom + "-Alexandre"
+console.log(prenom);
+
+let erreur;
+
+// Ici serait le résultat d'une vérification de taille sur le pseudo 
+erreur += "<hr><p class='couleur_rouge'>Erreur sur le pseudo</p>";
+
+// Ici serait le résultat d'une vérification sur le format d'email
+erreur += "<hr><p class='couleur_rouge'>Le mail n'est pas du bon format</p>";
+
+// Ici serait le résultat d'une vérification sur la longueur du mot de passe 
+erreur += "<hr><p class='couleur_rouge'>Le mot de passe est trop court</p>";
+
+elementChapitre5.innerHTML += "<br>" + erreur;
+
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// ---------- CHAPITRE 6 : Opérateurs arythmétiques ------------------------
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+
+let elementChapitre6 = document.getElementById("contenuChapitre6");
+
+// Addition
+let resultat = 10 + 5; // Ici le système comprend bien qu'entre deux numbers on parle d'une addition et non pas d'une concaténation
+elementChapitre6.innerHTML += resultat + "<br>";
+resultat = "10" + "5"; // Ici ce sont des string numérique, le système ne comprend pas la demande d'une addition et fait plutot une concaténation 
+elementChapitre6.innerHTML += resultat + "<br>";
+
+// Soustraction
+resultat = 10 - 5;
+elementChapitre6.innerHTML += resultat + "<br>";
+
+// Multiplication
+resultat = 10 * 5;
+elementChapitre6.innerHTML += resultat + "<br>";
+
+// Division
+resultat = 10 / 5;
+elementChapitre6.innerHTML += resultat + "<br>";
+
+// Puissance
+resultat = 10 ** 5;
+elementChapitre6.innerHTML += resultat + "<br>";
+
+// Modulo 
+// Le modulo représente le reste d'une division sous forme d'entier
+// Par exemple 10 % 3, à l'intérieur de 10, nous avons, 3 fois 3... Ce qui nous amène à 9, il reste donc 1 ! donc 10 % 3 nous donne un résultat de "1"
+resultat = 10 % 3;
+elementChapitre6.innerHTML += resultat + "<br>";
+
+// Attention si on cumule des opérations et de la concaténation, JS perds ses moyens... Pour éviter toute incohérence il faudra rajouter des parenthèses à l'opération 
+elementChapitre6.innerHTML += "Voici un résultat d'une opération 50 - 5 : " + (50 - 5) + "<br>";
+
+let chiffre1 = 10;
+let chiffre2 = 5;
+
+// Ci dessous des raccourci d'écriture équivalents à : chiffre1 = chiffre1 + chiffre2  etc etc 
+chiffre1 += chiffre2;
+console.log(chiffre1);
+chiffre1 -= chiffre2;
+console.log(chiffre1);
+chiffre1 *= chiffre2;
+console.log(chiffre1);
+chiffre1 /= chiffre2;
+console.log(chiffre1);
+chiffre1 %= chiffre2;
+console.log(chiffre1);
+
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// ---------- CHAPITRE 7 : Conditions & opérateurs de comparaison ----------
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+
+let elementChapitre7 = document.getElementById('contenuChapitre7');
+// Une condition permet de prévoir différents cas possibles
+// Une condition ne peut recevoir qu'une réponse de type true / false 
+
+let a = 10;
+let b = 5;
+let c = 2;
+
+if (a < b) { // si "a" est strictement est supérieur à "b"
+    // Si la condition dans les parenthèses du if vaut "true" c'est à dire si la condition est vraie, alors toutes les lignes à l'intérieur des accolades du if vont s'exécuter
+    elementChapitre7.innerHTML += "La valeur de la variable 'a' est bien supérieure à la valeur de la variable 'b'<br>";
+    // Une fois le code exécuté, on sort du bloc entier, on ne passera PAS par le else
+} else { // JAMAIS de () sur un else = représente toutes les autres possibilités 
+    // Je tombe dans le else, uniquement si le cas if est faux, else représente toutes les autres possibilités, le code entier de ces accolades là s'exécute
+    elementChapitre7.innerHTML += "La valeur de la variable 'a' n'est PAS supérieure à la valeur de la variable 'b'<br>";
+}
+
+console.log("Je suis après le if");
+
+// Plusieurs conditions obligatoires => AND : && 
+if (a > b && b > c) {
+    // Je rentre ici seulement si les DEUX conditions sont vraies ! 
+    // Si l'une ou l'autre est fausse, alors je tomberai dans le else (s'il y en a un)
+    elementChapitre7.innerHTML += "YES les deux conditions sont bonnes !<br>";
+}
+
+// Au moins une des conditions => OR : || 
+// ATTENTION, on met bien un double égal !!! un simple égal = c'est une affectation ! une double égal = c'est une comparaison ! 
+if (a == 9 || b > c ) {
+    elementChapitre7.innerHTML += "OUI au moins une condition est bonne !<br>";
+}
+
+a = 8;
+b = 5;
+c = 2;
+// if / else if / else 
+    if (a == 8) {
+        elementChapitre7.innerHTML += "Réponse A<br>";
+    } else if (a != 10) { // Ou sinon
+        elementChapitre7.innerHTML += "Réponse B<br>";
+    } else if (c > b) { // Ou sinon 
+        elementChapitre7.innerHTML += "Réponse C<br>";
+    } else { // sinon, tous les autres cas 
+        elementChapitre7.innerHTML += "La réponse D<br>";
+    }
+
+    console.log("Je sors");
+
+
+
+
 
 
 

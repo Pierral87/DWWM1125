@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", () => {
+
 // Commentaire JS sur une seule ligne
 
 /* 
@@ -92,7 +94,7 @@ document.getElementById("contenuChapitre1").innerHTML = "Un autre contenu via in
 
 // -------------------------------------------------------------------------
 // -------------------------------------------------------------------------
-// ---------- CHAPITRE 1 : AFFICHAGE ---------------------------------------
+// ---------- CHAPITRE 2 : Variables - Déclaration, affectation ------------
 // -------------------------------------------------------------------------
 // -------------------------------------------------------------------------
 
@@ -170,3 +172,106 @@ C=A+B;
 B=A+C;
 A=B;
 
+console.log("Voici la valeur de A : " + A);
+console.log("Voici la valeur de B : " + B);
+console.log("Voici la valeur de C : " + C);
+console.log("Voici la valeur de D : " + D);
+
+// -----------------------------
+let conducteur = "Sam";
+let passager = "Bob";
+// Exercice : inverser les valeurs de ces deux variables 
+// Ici pour échanger ces deux valeurs, c'est possible en utilisant une variable intermédiaire ! 
+let temp = conducteur; // ici temp contient maintenant Sam
+conducteur = passager; // Je met Bob à la place de Sam dans le conducteur
+passager = temp; // Je met Sam contenu dans temp, à la place de Bob dans le passager, à partir de là les valeurs sont inversées :) 
+console.log("conducteur : " + conducteur);
+console.log("passager : " + passager);
+
+
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// ---------- CHAPITRE 3 : Type de données (pseudo type / type primitif) ---
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+
+// A partir de maintenant on va stocker les selections de nos div dans des variables, pour les manipuler plus simplement
+let elementChapitre3 = document.getElementById("contenuChapitre3");
+
+maBoite = 10;
+
+elementChapitre3.innerHTML += "Valeur contenue dans la variable maBoite : " + maBoite;
+
+// Pour voir le type de donnée contenu dans la variable, je vais utiliser l'instruction typeof 
+// L'instruction typeof renvoie une chaine de caractère indiquant le type de l'élément 
+elementChapitre3.innerHTML += "<br>Type de la donnée dans la variable maBoite : " + maBoite;
+elementChapitre3.innerHTML += typeof maBoite; // type = number => type numérique 
+console.log(typeof maBoite);
+
+maBoite = "10";
+elementChapitre3.innerHTML += "<br>Type de la donnée dans la variable maBoite : " + maBoite;
+elementChapitre3.innerHTML += typeof maBoite; // type = string => chaine de caractère car on a mis des guillemets ! 
+console.log(typeof maBoite);
+
+maBoite = "Bonjour";
+elementChapitre3.innerHTML += "<br>Type de la donnée dans la variable maBoite : " + maBoite;
+elementChapitre3.innerHTML += typeof maBoite; // type = string => chaine de caractère car on a mis des guillemets ! 
+console.log(typeof maBoite);
+
+maBoite = -10;
+elementChapitre3.innerHTML += "<br>Type de la donnée dans la variable maBoite : " + maBoite;
+elementChapitre3.innerHTML += typeof maBoite; // type = number 
+console.log(typeof maBoite);
+
+maBoite = 5.6;
+elementChapitre3.innerHTML += "<br>Type de la donnée dans la variable maBoite : " + maBoite;
+elementChapitre3.innerHTML += typeof maBoite; // type = number - dans d'autres langages, on appelera ça des float ou double 
+console.log(typeof maBoite);
+
+// Les booléens (boolean)
+// deux valeurs possibles : vrai ou faux => true ou false 
+// Toute chose en informatique, se retranscrit par une valeur booléenne implicite, toute chose en informatique vaut vrai ou faux 
+let choix = true;
+choix = false;
+console.log(choix);
+elementChapitre3.innerHTML += "<br>Type de la donnée dans la variable choix : " + choix;
+elementChapitre3.innerHTML += typeof choix;
+
+// Une variable qui n'existe pas : 
+elementChapitre3.innerHTML += "<br>Type d'une variable non déclarée' : ";
+elementChapitre3.innerHTML += typeof existePas;
+
+
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// ---------- CHAPITRE 4 : Quotes ------------------------------------------
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+
+// Les quotes, pour les chaines de caractères 
+let elementChapitre4 = document.getElementById("contenuChapitre4");
+
+let chaine = "Salut";
+
+// Simple quote (apostrophe)
+elementChapitre4.innerHTML += 'Hello chaine<br>'; // '' ou "" : aucune différence, juste un choix du développeur // les variables ne sont pas interprétées
+// Double quote (guillemets)
+elementChapitre4.innerHTML += "Bonjour chaine<br>"; // '' ou "" : aucune différence, juste un choix du développeur // Les variables ne sont pas interprétées 
+// Back quote (accent grave)
+elementChapitre4.innerHTML += `Ola ${chaine}<br>`; // Grâce aux back quote (accent grave, raccourci alt gr 7) il est possible d'interpréter une variable à l'intérieur de la chaine, par contre il faut la mettre entre accolades et avec un $ devant 
+
+
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// ---------- CHAPITRE 5 : Concaténation -----------------------------------
+// -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+});

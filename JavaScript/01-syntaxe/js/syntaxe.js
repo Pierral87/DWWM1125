@@ -520,19 +520,78 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // EXERCICE 1 : Refaire cette condition switch en if elseif else 
-            // Ensuite, faire en sorte que la couleur soit choisie par une saisie utilisateur 
+    // Ensuite, faire en sorte que la couleur soit choisie par une saisie utilisateur 
+    // let color = prompt("Quel est votre couleur préférée ?");
+    // if (color == "bleu") {
+    //     elementChapitre7.innerHTML += "Vous aimez le bleu<hr>";
+    // } else if (color == "vert") {
+    //     elementChapitre7.innerHTML += "Vous aimez le vert<hr>";
+    // } else if (color == "rouge") {
+    //     elementChapitre7.innerHTML += "Vous aimez le rouge<hr>";
+    // } else {
+    //     elementChapitre7.innerHTML += "Vous n'aimez ni le bleu ni le vert ni le rouge !<hr>";
+    // }
 
     // EXERCICE 2 : J'aimerai savoir si l'utilisateur est majeur, basé sur une saisie 
-            // Demander l'âge de l'utilisateur, qu'il puisse le saisir
-            // Faire une condition qui vient tester si l'âge est au moins 18 
-            // Si oui, afficher un message de bienvenue
+    // Demander l'âge de l'utilisateur, qu'il puisse le saisir
+    // Faire une condition qui vient tester si l'âge est au moins 18 
+    // Si oui, afficher un message de bienvenue
+    // let agePrompt = prompt("Quel est votre âge ?");
+    // if (agePrompt >= 18) alert("Bienvenue au nouveau");
+    // else alert("Vous n'êtes pas autorisé à rentrer");
+
+    // Ci dessous en if ternaire
+    // elementChapitre7.innerHTML += (agePrompt >= 18) ? "Bienvenue au nouveau" : "Vous n'êtes pas autorisé à rentrer";
+
+    // En if ternaire à l'intérieur du alert !... Attention à la lisibilité quand même...
+    // alert((agePrompt >= 18) ? "Bienvenue au nouveau" : "Vous n'êtes pas autorisé à rentrer");
+    // En if ternaire pour insérer le message dans une variable, on alert le message dans un second temps
+    // let message = (agePrompt >= 18) ? "Bienvenue au nouveau" : "Vous n'êtes pas autorisé à rentrer";
+    // alert(message);
 
     // EXERCICE 3 : Faire une vérification de mot de passe 
-            // Vous créez un mot de passe 
-            // Vous demandez à l'utilisateur le mot de passe
-            // Vous vérifiez qu'il corresponde au mot de passe enregistré
-            // S'il est correct : message de bienvenue
-            // Sinon : lui dire que le password n'est pas bon 
+    // Vous créez un mot de passe 
+    // Vous demandez à l'utilisateur le mot de passe
+    // Vous vérifiez qu'il corresponde au mot de passe enregistré
+    // S'il est correct : message de bienvenue
+    // Sinon : lui dire que le password n'est pas bon 
+    let password = "pouet";
+    let mdp = prompt("Saisissez votre mot de passe");
+    if (password == mdp) alert("Bienvenue");
+    else alert("Resaissez le mot de passe");
+
+    // -------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
+    // ---------- CHAPITRE 8 : Structure itérative : Boucles -------------------
+    // -------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
+
+    let elementChapitre8 = document.getElementById("contenuChapitre8");
+
+    // Une boucle permet de répéter un ensemble d'instructions selon une condition d'entrée 
+    // 3 informations nécessaires : 
+    // 1 - Valeur de départ (notre compteur)
+    // 2 - Condition d'entrée (basée sur notre compteur - ou pas)
+    // 3 - Incrémentation ou décrémentation du compteur (pour ne pas avoir une boucle infinie)
+
+    // Boucle while() {}
+    let compteur = 0; // valeur de départ 
+
+    // condition d'entrée on va dire, que l'on veut faire 10 tours de boucle, donc une condition compteur < 10
+
+    while (compteur < 10) {
+        elementChapitre8.innerHTML += compteur;
+        compteur++; // mon incrémentation, cela équivaut à dire compteur = compteur +1 
+    }
+
+    // Exercice : Refaire la boucle afin d'avoir un chiffre par ligne 
+    // à la base j'ai 0123456789
+    // maintenant je veux : 
+    // 0 
+    // 1 
+    // 2 
+    // 3 
+    // 4  ...
 
 
 

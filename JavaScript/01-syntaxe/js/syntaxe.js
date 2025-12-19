@@ -593,6 +593,56 @@ document.addEventListener("DOMContentLoaded", () => {
     // 3 
     // 4  ...
 
+    compteur = 0;
+    while (compteur < 10) {
+        elementChapitre8.innerHTML += "<br>" + compteur;
+        compteur++; // mon incrémentation, cela équivaut à dire compteur = compteur +1 
+    }
+
+    // On utilise souvent la boucle while avec des conditions d'entrée non numérique, plutôt dans le sens 
+    // "tant que la condition est vraie, on poursuit, si on tombe sur "false", alors la boucle s'arrête"
+    elementChapitre8.innerHTML += "<hr>";
+
+
+    // Boucle for() {}
+    // for(compteur; condition; incrementation) {}
+    for (let i = 0; i < 10; i++) {
+        elementChapitre8.innerHTML += i;
+    }
+
+    // EXERCICE 1 
+    // Faire une boucle qui affiche de 0 à 99 avec le chiffre 50 en rouge 
+
+    // EXERCICE 2 
+    // Afficher la chaine de caractère suivante à l'aide d'une boucle
+    // 0 - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9
+
+    // EXERCICE 3 
+    // Afficher des nombres allant de 2000 à 1930
+
+    // EXERCICE 4 
+    // Afficher le titre suivant : "<h2>Je m'affiche pour la Nème fois</h2>";
+    // 10 tour de boucles, on remplace N par la valeur de la boucle, et on veut gérer l'affichage de 1ère qui est une exception comparé aux autres 2ème 3ème
+
+    // EXERCICE 5
+    // Déclarez une variable sum avec la valeur 0
+    // Utilisez une boucle for pour parcourir les entiers de 1 à 10 
+    // Chaque tour de boucle, ajoutez l'entier courant à la variable sum 
+    // A la fin de la boucle, affichez la valeur de sum qui doit contenir l'addition de chaque chiffre de 1 à 10 
+
+    // EXERCICE 6 
+    // Affichez dans un tableau html avec un chiffre dans chaque cellule allant de 0 à 9 
+
+    // EXERCICE 7
+    // Refaire l'exercice du password du chapitre if, mais permettre à l'utilisateur de continuer à tenter de saisir le password, tant qu'il n'est pas bon
+    // On sortira de la boucle uniquement lorsque le password est le bon ! 
+
+    // EXERCICE 8 
+    // Faire choisir un nombre entre 1 et 50 à l'utilisateur 
+    // Demandez ensuite à l'utilisateur un nombre et l'informer si le nombre recherché est plus grand ou plus petit 
+    // Le jeu ne s'arrète qu'une fois le nombre trouvé en affichant un message "Vous avez trouvé le nombre"
+    // Deuxième version, avec un chiffre aléatoire (non saisi par l'utilisateur)
+
 
 
 

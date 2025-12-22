@@ -757,13 +757,13 @@ document.addEventListener("DOMContentLoaded", () => {
     //         alert("Votre nombre est plus grand !");
     //     }
 
-        // if(essai == 1) {
-        //     alert ("C'est votre premier essai, si on tombe ici on ne va pas prompt");
-        //     continue; // L'instruction continue met fin au tour de boucle en cours, mais la boucle continue de s'exécuter avec un nouveau tour 
-        // }
+    // if(essai == 1) {
+    //     alert ("C'est votre premier essai, si on tombe ici on ne va pas prompt");
+    //     continue; // L'instruction continue met fin au tour de boucle en cours, mais la boucle continue de s'exécuter avec un nouveau tour 
+    // }
 
 
-        // Si l'utilisateur a fait 3 essai, alors c'est terminé il a perdu ! 
+    // Si l'utilisateur a fait 3 essai, alors c'est terminé il a perdu ! 
     //     if (essai >= 3) {
     //         alert("Perdu !");
     //         break; // L'instruction break me permet de mettre fin à l'exécution de la boucle
@@ -831,7 +831,7 @@ document.addEventListener("DOMContentLoaded", () => {
     elementChapitre9.innerHTML += "Addition de 1 + 1 un type de number et un type string : " + ("1" + 1) + "<br>";
 
     // Par contre, si j'englobe ça dans un parseInt 
-    elementChapitre9.innerHTML += "Addition de 1 + 1 un type de number et un type string mais avec parseInt : " + (parseInt("1",10) + 1) + "<br>";
+    elementChapitre9.innerHTML += "Addition de 1 + 1 un type de number et un type string mais avec parseInt : " + (parseInt("1", 10) + 1) + "<br>";
 
     // ---------------------------------------------------------
     // ----------------------- parseFloat(chaine)
@@ -877,7 +877,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Ci dessous la façon de déclarer une fonction : function operator
     // Il est possible de définir une fonction dans une variable, cela ne change pas sa syntaxe d'exécution
     // Cela permet parfois de récupérer des ressources sur une allocation de mémoire gérée localement plutôt que globalement
-    let maFonction2 = function() {
+    let maFonction2 = function () {
         return "Hello world ! <br>";
     }
 
@@ -886,12 +886,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Fonction avec un argument : 
 
     // Ici je défini que ma fonction direBonjour attend une information
-        // On va appeler ça un paramètre/param/argument
-            // En gros, c'est une variable qui va réceptionner, la valeur que l'on transmet à l'appel de cette fonction
-            // Lorsque je vais faire direBonjour("Pierre"), la valeur Pierre va être récupérée dans la variable de réception "qui"
-            // Le fait que "qui" existe et récupère une valeur, me permet de la manipuler dans le code de ma fonction 
+    // On va appeler ça un paramètre/param/argument
+    // En gros, c'est une variable qui va réceptionner, la valeur que l'on transmet à l'appel de cette fonction
+    // Lorsque je vais faire direBonjour("Pierre"), la valeur Pierre va être récupérée dans la variable de réception "qui"
+    // Le fait que "qui" existe et récupère une valeur, me permet de la manipuler dans le code de ma fonction 
     function direBonjour(qui) {
-        return "Bonjour " + qui + ", bienvenue sur notre site<hr>";  
+        return "Bonjour " + qui + ", bienvenue sur notre site<hr>";
     }
 
     // pseudo = prompt("Quel est votre nom ?");
@@ -901,18 +901,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // On peut mettre plusieurs paramètres
     function addition(nb1, nb2) {
-        return `Voici l'addition entre ${nb1} et ${nb2} : ` + (nb1+nb2) + `<br>`;
+        return `Voici l'addition entre ${nb1} et ${nb2} : ` + (nb1 + nb2) + `<br>`;
     }
 
-    elementChapitre10.innerHTML += addition(10,5);
-    elementChapitre10.innerHTML += addition(101,55);
-    elementChapitre10.innerHTML += addition(101,556);
+    elementChapitre10.innerHTML += addition(10, 5);
+    elementChapitre10.innerHTML += addition(101, 55);
+    elementChapitre10.innerHTML += addition(101, 556);
 
 
     // La fonction ci dessous va m'éviter de à chaque fois faire appeler au innerHTML d'un élément et d'y rajouter qqchoz avec le +=, la fonction va le gérer solo ! Elle attend en premier param la chaine que l'on va rajouter et en deuxieme param dans quel element on va rajouter ! 
     // Pas de return ici ! Ce sera une exception parmis nos fonctions, car elle lance déjà directement son comportement, à savoir l'affichage dans le innerHTML de l'élément sélectionné 
     function affiche(chaine, element) {
-       element.innerHTML += chaine + "<br>";
+        element.innerHTML += chaine + "<br>";
     }
 
     affiche("COUCOU", elementChapitre10);
@@ -927,6 +927,100 @@ document.addEventListener("DOMContentLoaded", () => {
     affiche(calculTVA(500), elementChapitre10);
 
     // EXERCICE, réutiliser la fonction calculTVA mais permettre à l'utilisateur de choisir le taux de TVA à appliquer (par défaut au dessus c'est 20, mais on veut pouvoir choisir d'autres valeurs)
+    // Bonus : Une fois fait, faire en sorte que le choix du taux soit facultatif, en gros, que si le taux n'est pas renseigné, que l'on utilise le taux de base de 20%
+    // let taux = "";
+
+    // Ci dessous une première version qui induit forcément un prompt dans la fonction
+    // function calculTVATaux(prix) {
+    //     let taux = prompt("Quel est le taux de taxe à appliquer");
+    //     return prix + (prix * (taux / 100));
+    // }
+
+    // affiche(calculTVATaux(100), elementChapitre10);
+
+    // Autre façon, on préfèrera plutôt gérer deux params dans la fonction histoire de rester générique !
+    // Le but de la fonction est de calculer uniquement le prix TTC, sans se soucier de devoir gérer aussi la saisie
+
+    function calculTVATaux2(prix, taux = 20) {
+        // console.log(taux);
+        return parseFloat(prix) + (parseFloat(prix) * (parseFloat(taux) / 100));
+    }
+
+    affiche(calculTVATaux2(100, 35), elementChapitre10);
+    affiche(calculTVATaux2(100), elementChapitre10);
+    elementChapitre8.innerHTML += "<hr>";
+
+    // let prixUser = prompt("Saisissez un prix HT");
+
+    // let confirmTaux = confirm("Voulez vous saisir un taux différent de 20% ?");
+
+    // if (confirmTaux) {
+    //     let tauxUser = prompt("Saisissez le taux sous forme d'entier");
+    //     affiche(calculTVATaux2(prixUser, tauxUser), elementChapitre10);
+    // } else {
+    //     affiche(calculTVATaux2(prixUser), elementChapitre10);
+    // }
+
+
+    // Selon l'endroit où est déclarée une variable ainsi que le mot clé utilisé pour définir la variable (var, let, const) celle ci pourra être accessible dans tout le script ou uniquement dans une portion du script
+    // On parle ici de portée, la portée d'une variable
+
+    // Il existe plusieurs portée de variable à savoir la portée : 
+    // Globale : On considère global l'entièreté du code, partout en dehors des blocs 
+    // Locale : On considère local l'intérieur des blocs (les blocs sont toujours des accolades, par exemple l'intérieur d'une fonction, d'une boucle, d'un if)
+
+    // Une variable déclarée dans un espace local n'exisste pas en dehors de cette espace ! (sauf dans le cas de var)
+
+    // On parle de portée, mais aussi d'environnement ou de scope 
+
+    let animal = "loup"; // Variable déclarée dans le scope global
+
+    function foret() {
+        let animal = "lapin"; // Variable déclarée dans le scope local 
+        return animal;
+    }
+
+    affiche(animal + "<hr>", elementChapitre10); // Affiche loup
+    foret(); // rien ne se passe, un simple return dans le vide que je ne traite pas 
+    affiche(animal + "<hr>", elementChapitre10); // Affiche loup
+    affiche(foret() + "<hr>", elementChapitre10); // Affiche lapin
+    affiche(animal + "<hr>", elementChapitre10); // Affiche loup
+    animal = foret(); // Uniquement ici j'aurai un changement de valeur de ma variable animal
+    affiche(animal + "<hr>", elementChapitre10); // Affiche lapin
+
+    affiche("<b>Les Immediately Invoked Functions Expressions IIFE</b><br>", elementChapitre10);
+
+    // En JS il y a une spécificité que l'on utilise régulièrement, c'est la possibilité de créer des fonctions anonymes (c'est à dire, on ne les nomme pas) et de les exécuter immédiatement sans passer par l'étape de la déclaration
+
+    // Les IIFE sont des fonctions qui sont immédiatmeent exécutées après avoir été définies. Elles sont généralement utilisées dans JS pour créer un scope isolé dans lequel des variables peuvent être déclarées sans polluer le scope global
+
+    // Les concepts et l'intérêt des IIFE : 
+
+        // Encapsulation : Les IIFE permettent d'encapsuler du code dans une portée locale, empéchant ainsi les collisions/conflits de onms de variables ou de fonctions avec d'autres parties du code 
+
+        // Protection de la portée globale : En encapsulant du code dans une IIFE, on évite de polluer la portée globale avec des variables dont on a besoin peut être que pendant un simple instant 
+
+        // Prévention des conflits : En enveloppant le code dans une IIFE, vous évitez les conflits potentiels avec d'autres bibliothèques ou frameworks qui pourraient utiliser des noms de variables ou de fonctions similaires 
+
+        // Isolation du code : Les IIFE permettent d'isoler le code, ce qui peut rendre le code plus lisible et facile à maintenir à la longue 
+
+
+        // deux syntaxes différentes ici, la différence se situe dans la position des parenthèses
+        // Après une fonction on a toujours des parenthèses fucntion()  qui définissent que l'élément est une fonction déclarée
+        // Ici, pas seulement déclarée, mais aussi immédiatement exécutée ! 
+        // On utilise la plupart du temps ces fonctions anonyme au travers des évènements
+            // Un évènement lancera une portion de code, cette portion de code sera englobée dans une fonction anonyme
+        (function() {
+            return affiche("Cette fonction est exécutée automatiquement", elementChapitre10);
+        }());
+
+        (function() {
+            return affiche("Cette fonction est exécutée automatiquement", elementChapitre10);
+        })();
+
+        
+
+
 
 
 

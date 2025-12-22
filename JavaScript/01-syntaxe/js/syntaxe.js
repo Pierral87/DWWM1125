@@ -677,15 +677,42 @@ document.addEventListener("DOMContentLoaded", () => {
     // Utilisez une boucle for pour parcourir les entiers de 1 à 10 
     // Chaque tour de boucle, ajoutez l'entier courant à la variable sum 
     // A la fin de la boucle, affichez la valeur de sum qui doit contenir l'addition de chaque chiffre de 1 à 10 
+    let sum = 0; // Je suis obligé de déclarer sum à l'extérieur de la boucle, sinon cette variable n'existera que dans l'espace local de ma boucle for, et pas à l'extérieur
+    for (let i = 1; i <= 10; i++) {
+        sum += i;
+    }
+    console.log(sum);
 
     // EXERCICE 6 
     // Affichez dans un tableau html avec un chiffre dans chaque cellule allant de 0 à 9 
     // Ici javascript n'est pas capable de s'en sortir si je lui innerHTML des morceaux de tableaux un par un 
     // Pour résoudre cet exercice il va falloir que je "modèle" mon tableau dans une variable pour ensuite innerHTML cette variable
+    let tableau = "";
+    tableau += "<table border='1' style='width: 50%; margin: 0 auto; border-collapse: collapse; text-align: center;'>";
+    tableau += "<tr>";
 
+    for (let i = 0; i < 10; i++) {
+        tableau += `<td>${i}</td>`;
+    }
+
+    tableau += "</tr>";
+    tableau += "</table>";
+    console.log(tableau);
+    elementChapitre8.innerHTML += tableau;
     // EXERCICE 7
     // Refaire l'exercice du password du chapitre if, mais permettre à l'utilisateur de continuer à tenter de saisir le password, tant qu'il n'est pas bon
     // On sortira de la boucle uniquement lorsque le password est le bon ! 
+    let passwordCorrect = "hajar1998";
+    let mdp = "";
+
+    // while (passwordCorrect != mdp) {
+    //     mdp = prompt("Veuillez entrer votre mot de passe");
+    //     if (mdp != passwordCorrect) {
+    //         alert("Mot de passe incorrect ressayez");
+    //     } else {
+    //         alert ("Mot de passe correct, accès autorisé");
+    //     }
+    // }
 
     // EXERCICE 8 
     // Faire choisir un nombre entre 1 et 50 à l'utilisateur 
@@ -693,6 +720,215 @@ document.addEventListener("DOMContentLoaded", () => {
     // Le jeu ne s'arrète qu'une fois le nombre trouvé en affichant un message "Vous avez trouvé le nombre"
     // Deuxième version, avec un chiffre aléatoire (non saisi par l'utilisateur)
     // Le chiffre aléatoire va se gérer avec l'objet/l'outil s'appelant Math  on va utiliser sa méthode Math.random et comme c'est un float qu'il va nous générer, on va aussi faire un arrondi 
+    // let nbrChoisi = prompt("Choisissez un nombre entre 1 et 50");
+    // let nbrSecret = 26;
+    // let nbrSecret = Math.floor(Math.random()*49+1);
+    // console.log("Resultat du random : " + nbrSecret);
+
+    // while (nbrSecret != nbrChoisi) {
+    //     if (nbrChoisi < nbrSecret) {
+    //         alert("Votre nombre est plus petit !");
+    //     } else if (nbrChoisi > nbrSecret) {
+    //         alert("Votre nombre est plus grand !");
+    //     } 
+    //     nbrChoisi = prompt("Ressayez un nombre entre 1 et 50");
+    // }
+
+    // if (nbrChoisi == nbrSecret) {
+    //     alert("Felicitations vous avez trouvé !");
+    // }
+
+    // console.log(nbrSecret);
+
+
+    // Maintenant avec la possibilité de tester le chiffre seulement 3 fois 
+    // let nbrChoisi = prompt("Choisissez un nombre entre 1 et 50");
+    // // let nbrSecret = 26;
+    // let nbrSecret = Math.floor(Math.random() * 49 + 1);
+    // console.log("Resultat du random : " + nbrSecret);
+    // let essai = 0; // On va compter le nombre d'essai pour le jeu, afin de limiter à une certaine valeur
+
+    // while (nbrSecret != nbrChoisi) {
+    //     console.log("Essai numero : " + essai);
+    //     essai++;
+    //     if (nbrChoisi < nbrSecret) {
+    //         alert("Votre nombre est plus petit !");
+    //     } else if (nbrChoisi > nbrSecret) {
+    //         alert("Votre nombre est plus grand !");
+    //     }
+
+        // if(essai == 1) {
+        //     alert ("C'est votre premier essai, si on tombe ici on ne va pas prompt");
+        //     continue; // L'instruction continue met fin au tour de boucle en cours, mais la boucle continue de s'exécuter avec un nouveau tour 
+        // }
+
+
+        // Si l'utilisateur a fait 3 essai, alors c'est terminé il a perdu ! 
+    //     if (essai >= 3) {
+    //         alert("Perdu !");
+    //         break; // L'instruction break me permet de mettre fin à l'exécution de la boucle
+    //     }
+    //     nbrChoisi = prompt("Ressayez un nombre entre 1 et 50");
+    // }
+
+    // if (nbrChoisi == nbrSecret) {
+    //     alert("Felicitations vous avez trouvé !");
+    // }
+
+    // Boucle do{} while()
+    // La boucle do while contrairement à while qui teste la condition d'entrée en debut de boucle
+    // do while va tester la condition à la fin de la boucle ! C'est à dire que même si la condition n'est pas rencontrée, elle fera malgré tout un premier tour quoi qu'il arrive ! 
+    elementChapitre8.innerHTML += "<hr>";
+
+    let i = 5;
+    do {
+        elementChapitre8.innerHTML += "<br>La boucle do while est en train de s'exécuter, valeur de i :" + i;
+    } while (i > 10);
+
+
+    // -------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
+    // ---------- CHAPITRE 9 : Fonctions prédéfinies / globales ----------------
+    // -------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
+
+    // Les fonctions globales en JS sont des fonctions déjà inscrites dans le langage
+    // On entend être une fonction globale, une fonction qui est disponible à tout moment dans le code
+    // En JS, on utilise essentiellement des "fonctions" qui sont rattachées à des "outils" par exemple ci dessus on a utilisé la fonction random de l'outil Math, la fonction round de l'outil Math
+    // C'est ce qu'on appelle des méthodes
+
+    // Les fonctions réellement globales, il y en a peu ! 
+
+    /* 
+        eval()
+        uneval()
+        isFinite()
+        isNaN()
+        parseFloat()
+        parseInt()
+        encodeURI()
+        encodeURIComponent()
+        decodeURI()
+        decodeURIComponent()
+    */
+
+    // ---------------------------------------------------------
+    // ----------------------- parseInt(chaine, base)
+    // ---------------------------------------------------------
+    // https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/parseInt
+    // On attend en argument/paramètre : 
+    // une chaine de caractère 
+    // une base : base arithmétique (base 10 pour la base décimale = on parle uniquement de manipulation de chiffres de 0 à 9)
+    // En gros, on va transformer une chaine de caractères qui contient uniquement des chiffres, en vrai type number ! Pour éviter les ambiguités et les dysfonctionnements de notre code d'un point de vue d'opération mathématique ou autre (comparaison de longueur etc)
+    let elementChapitre9 = document.getElementById("contenuChapitre9");
+    chaine = "123";
+    elementChapitre9.innerHTML += "La chaine 123 contenu dans la var chaine est de type : " + typeof chaine + "<hr>";
+    chaine = parseInt(chaine, 10);
+    console.log(chaine);
+    elementChapitre9.innerHTML += "APRES UN PARSE INT : La chaine 123 contenu dans la var chaine est de type : " + typeof chaine + "<hr>";
+
+    // La ligne ci dessous sans faire parseInt, il pense que je suis en train de faire une concaténation
+    elementChapitre9.innerHTML += "Addition de 1 + 1 un type de number et un type string : " + ("1" + 1) + "<br>";
+
+    // Par contre, si j'englobe ça dans un parseInt 
+    elementChapitre9.innerHTML += "Addition de 1 + 1 un type de number et un type string mais avec parseInt : " + (parseInt("1",10) + 1) + "<br>";
+
+    // ---------------------------------------------------------
+    // ----------------------- parseFloat(chaine)
+    // ---------------------------------------------------------
+    // https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/parseFloat
+    elementChapitre9.innerHTML += typeof "14.9" + "<br>";
+    elementChapitre9.innerHTML += typeof parseFloat("14.9") + "<br>";
+    console.log(parseFloat("14.9")); // Ici on reçoit bien un number 14.9
+    console.log(parseFloat("14,9")); // Ici par contre attention on reçoit seulement 14 !!! Car la virgule n'est pas comprise comme étant la virgule décimale que nous comprennons en français, il faudra bien utiliser le point du pavé numérique ! 
+
+
+    // -------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
+    // ---------- CHAPITRE 10 : Fonctions utilisateurs -------------------------
+    // -------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
+
+    // Avoir un code DRY (Dont Repeat Yourself) en programmation est toujours important ! 
+    // Plutôt que d'avoir à plusieurs endroit du code, un traitement identique pour un contexte particulier
+    // Je vais préférer, englober le code en question, dans une fonction ! 
+    // Cela me permettra de le réutiliser pour plus tard ! 
+
+    let elementChapitre10 = document.getElementById('contenuChapitre10');
+
+    // Déclaration d'une fonction : 
+    // Une fonction a toujours un nom et des parenthèses qui contiennent des paramètres (ou pas)
+    function maFonction() { // Ici façon de déclarer que l'on appelle function statement
+        // Il faut TOUJOURS un return dans une fonction
+        // C'est ce qui permet de nous dire ce que retourne exactement notre fonction
+        // Ici maFonction() retourne la chaine de caractères "Bonjour à tous <br>"
+        return "Bonjour à tous<br>";
+    }
+
+    // Ici l'exécution de ma fonction
+    elementChapitre10.innerHTML += maFonction();
+
+    // Je peux éxecuter une fonction à tout moment de mon code
+    // Par contre, c'est à moi de dire ce que je fais du return de cette fonction ! 
+    // La ci dessous, j'aurai un appel de maFonction() sans en traiter le return
+    // Ni d'affichage via le innerHTML, ni l'insertion dans une variable, l'exécution ne produit rien ! 
+    maFonction();
+
+    // Ci dessous la façon de déclarer une fonction : function operator
+    // Il est possible de définir une fonction dans une variable, cela ne change pas sa syntaxe d'exécution
+    // Cela permet parfois de récupérer des ressources sur une allocation de mémoire gérée localement plutôt que globalement
+    let maFonction2 = function() {
+        return "Hello world ! <br>";
+    }
+
+    elementChapitre10.innerHTML += maFonction2();
+
+    // Fonction avec un argument : 
+
+    // Ici je défini que ma fonction direBonjour attend une information
+        // On va appeler ça un paramètre/param/argument
+            // En gros, c'est une variable qui va réceptionner, la valeur que l'on transmet à l'appel de cette fonction
+            // Lorsque je vais faire direBonjour("Pierre"), la valeur Pierre va être récupérée dans la variable de réception "qui"
+            // Le fait que "qui" existe et récupère une valeur, me permet de la manipuler dans le code de ma fonction 
+    function direBonjour(qui) {
+        return "Bonjour " + qui + ", bienvenue sur notre site<hr>";  
+    }
+
+    // pseudo = prompt("Quel est votre nom ?");
+    // elementChapitre10.innerHTML += direBonjour(pseudo);
+    // Ci dessous je transmet à l'appel de ma fonction, la valeur "Alexandre", ce qui permet à la fonction de s'exécuter en comprennant qu'elle doit dire bonjour à "Alexandre"
+    elementChapitre10.innerHTML += direBonjour("Alexandre");
+
+    // On peut mettre plusieurs paramètres
+    function addition(nb1, nb2) {
+        return `Voici l'addition entre ${nb1} et ${nb2} : ` + (nb1+nb2) + `<br>`;
+    }
+
+    elementChapitre10.innerHTML += addition(10,5);
+    elementChapitre10.innerHTML += addition(101,55);
+    elementChapitre10.innerHTML += addition(101,556);
+
+
+    // La fonction ci dessous va m'éviter de à chaque fois faire appeler au innerHTML d'un élément et d'y rajouter qqchoz avec le +=, la fonction va le gérer solo ! Elle attend en premier param la chaine que l'on va rajouter et en deuxieme param dans quel element on va rajouter ! 
+    // Pas de return ici ! Ce sera une exception parmis nos fonctions, car elle lance déjà directement son comportement, à savoir l'affichage dans le innerHTML de l'élément sélectionné 
+    function affiche(chaine, element) {
+       element.innerHTML += chaine + "<br>";
+    }
+
+    affiche("COUCOU", elementChapitre10);
+
+
+    // Fonction pour calculer un prix TTC (donc avec TVA ajoutée)
+    function calculTVA(prix) {
+        return prix * 1.2;
+    }
+
+    affiche(calculTVA(100), elementChapitre10);
+    affiche(calculTVA(500), elementChapitre10);
+
+    // EXERCICE, réutiliser la fonction calculTVA mais permettre à l'utilisateur de choisir le taux de TVA à appliquer (par défaut au dessus c'est 20, mais on veut pouvoir choisir d'autres valeurs)
+
+
 
 
 

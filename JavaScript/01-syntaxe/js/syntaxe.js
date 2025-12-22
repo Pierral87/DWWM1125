@@ -555,10 +555,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Vous vérifiez qu'il corresponde au mot de passe enregistré
     // S'il est correct : message de bienvenue
     // Sinon : lui dire que le password n'est pas bon 
-    let password = "pouet";
-    let mdp = prompt("Saisissez votre mot de passe");
-    if (password == mdp) alert("Bienvenue");
-    else alert("Resaissez le mot de passe");
+    // let password = "pouet";
+    // let mdp = prompt("Saisissez votre mot de passe");
+    // if (password == mdp) alert("Bienvenue");
+    // else alert("Resaissez le mot de passe");
 
     // -------------------------------------------------------------------------
     // -------------------------------------------------------------------------
@@ -606,23 +606,71 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Boucle for() {}
     // for(compteur; condition; incrementation) {}
+    // La boucle for est très spécifique aux compteurs numériques, elle ne peut pas fonctionner differemment !
+    // Son avantage ? Impossible de se tromper dans la syntaxe car elle inclue automatiquement la déclaration du compteur, la condition et l'incrémentation 
     for (let i = 0; i < 10; i++) {
         elementChapitre8.innerHTML += i;
     }
+    elementChapitre8.innerHTML += "<hr>";
 
     // EXERCICE 1 
     // Faire une boucle qui affiche de 0 à 99 avec le chiffre 50 en rouge 
+    for (let i = 0; i < 100; i++) {
+        if (i == 50) {
+            elementChapitre8.innerHTML += "<span style='color:red;'>" + i + " </span>";
+        } else {
+            elementChapitre8.innerHTML += i + " ";
+        }
+    }
+    elementChapitre8.innerHTML += "<hr>";
 
     // EXERCICE 2 
     // Afficher la chaine de caractère suivante à l'aide d'une boucle
     // 0 - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9
+    for (let i = 0; i < 10; i++) {
+        if (i === 0) {
+            elementChapitre8.innerHTML += i;
+        } else {
+            elementChapitre8.innerHTML += " - " + i;
+        }
+    }
+    elementChapitre8.innerHTML += "<hr>";
+
+
 
     // EXERCICE 3 
     // Afficher des nombres allant de 2000 à 1930
+    for (let i = 2000; i >= 1930; i--) {
+        elementChapitre8.innerHTML += i + " ";
+    }
+    elementChapitre8.innerHTML += "<hr>";
+
 
     // EXERCICE 4 
     // Afficher le titre suivant : "<h2>Je m'affiche pour la Nème fois</h2>";
     // 10 tour de boucles, on remplace N par la valeur de la boucle, et on veut gérer l'affichage de 1ère qui est une exception comparé aux autres 2ème 3ème
+    for (let i = 1; i < 11; i++) {
+        if (i == 1) {
+            elementChapitre8.innerHTML += `<h2>Je m'affiche pour la ${i}ère fois</h2>`;
+        } else {
+            elementChapitre8.innerHTML += `<h2>Je m'affiche pour la ${i}ème fois</h2>`;
+        }
+    }
+
+    elementChapitre8.innerHTML += "<hr>";
+
+    for (let i = 1; i < 11; i++) {
+        elementChapitre8.innerHTML += (i == 1) ? `<h2>Je m'affiche pour la ${i}ère fois</h2>` : `<h2>Je m'affiche pour la ${i}ème fois</h2>`;
+    }
+
+    elementChapitre8.innerHTML += "<hr>";
+
+    for (let i = 1; i < 11; i++) {
+        let suffixe = (i == 1) ? "ère" : "ème";
+        elementChapitre8.innerHTML += `<h2>Je m'affiche pour la ${i}${suffixe} fois</h2>`;
+    }
+
+
 
     // EXERCICE 5
     // Déclarez une variable sum avec la valeur 0
@@ -632,6 +680,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // EXERCICE 6 
     // Affichez dans un tableau html avec un chiffre dans chaque cellule allant de 0 à 9 
+    // Ici javascript n'est pas capable de s'en sortir si je lui innerHTML des morceaux de tableaux un par un 
+    // Pour résoudre cet exercice il va falloir que je "modèle" mon tableau dans une variable pour ensuite innerHTML cette variable
 
     // EXERCICE 7
     // Refaire l'exercice du password du chapitre if, mais permettre à l'utilisateur de continuer à tenter de saisir le password, tant qu'il n'est pas bon
@@ -642,6 +692,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Demandez ensuite à l'utilisateur un nombre et l'informer si le nombre recherché est plus grand ou plus petit 
     // Le jeu ne s'arrète qu'une fois le nombre trouvé en affichant un message "Vous avez trouvé le nombre"
     // Deuxième version, avec un chiffre aléatoire (non saisi par l'utilisateur)
+    // Le chiffre aléatoire va se gérer avec l'objet/l'outil s'appelant Math  on va utiliser sa méthode Math.random et comme c'est un float qu'il va nous générer, on va aussi faire un arrondi 
 
 
 

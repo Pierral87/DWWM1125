@@ -950,16 +950,16 @@ document.addEventListener("DOMContentLoaded", () => {
     affiche(calculTVATaux2(100), elementChapitre10);
     elementChapitre8.innerHTML += "<hr>";
 
-    let prixUser = prompt("Saisissez un prix HT");
+    // let prixUser = prompt("Saisissez un prix HT");
 
-    let confirmTaux = confirm("Voulez vous saisir un taux différent de 20% ?");
+    // let confirmTaux = confirm("Voulez vous saisir un taux différent de 20% ?");
 
-    if (confirmTaux) {
-        let tauxUser = prompt("Saisissez le taux sous forme d'entier");
-        affiche(calculTVATaux2(prixUser, tauxUser), elementChapitre10);
-    } else {
-        affiche(calculTVATaux2(prixUser), elementChapitre10);
-    }
+    // if (confirmTaux) {
+    //     let tauxUser = prompt("Saisissez le taux sous forme d'entier");
+    //     affiche(calculTVATaux2(prixUser, tauxUser), elementChapitre10);
+    // } else {
+    //     affiche(calculTVATaux2(prixUser), elementChapitre10);
+    // }
 
     // Selon l'endroit où est déclarée une variable ainsi que le mot clé utilisé pour définir la variable (var, let, const) celle ci pourra être accessible dans tout le script ou uniquement dans une portion du script
     // On parle ici de portée, la portée d'une variable
@@ -995,44 +995,163 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Les concepts et l'intérêt des IIFE : 
 
-        // Encapsulation : Les IIFE permettent d'encapsuler du code dans une portée locale, empéchant ainsi les collisions/conflits de onms de variables ou de fonctions avec d'autres parties du code 
+    // Encapsulation : Les IIFE permettent d'encapsuler du code dans une portée locale, empéchant ainsi les collisions/conflits de onms de variables ou de fonctions avec d'autres parties du code 
 
-        // Protection de la portée globale : En encapsulant du code dans une IIFE, on évite de polluer la portée globale avec des variables dont on a besoin peut être que pendant un simple instant 
+    // Protection de la portée globale : En encapsulant du code dans une IIFE, on évite de polluer la portée globale avec des variables dont on a besoin peut être que pendant un simple instant 
 
-        // Prévention des conflits : En enveloppant le code dans une IIFE, vous évitez les conflits potentiels avec d'autres bibliothèques ou frameworks qui pourraient utiliser des noms de variables ou de fonctions similaires 
+    // Prévention des conflits : En enveloppant le code dans une IIFE, vous évitez les conflits potentiels avec d'autres bibliothèques ou frameworks qui pourraient utiliser des noms de variables ou de fonctions similaires 
 
-        // Isolation du code : Les IIFE permettent d'isoler le code, ce qui peut rendre le code plus lisible et facile à maintenir à la longue 
+    // Isolation du code : Les IIFE permettent d'isoler le code, ce qui peut rendre le code plus lisible et facile à maintenir à la longue 
 
 
-        // deux syntaxes différentes ici, la différence se situe dans la position des parenthèses
-        // Après une fonction on a toujours des parenthèses fucntion()  qui définissent que l'élément est une fonction déclarée
-        // Ici, pas seulement déclarée, mais aussi immédiatement exécutée ! 
-        // On utilise la plupart du temps ces fonctions anonyme au travers des évènements
-            // Un évènement lancera une portion de code, cette portion de code sera englobée dans une fonction anonyme
-        (function() {
-            return affiche("Cette fonction est exécutée automatiquement", elementChapitre10);
-        }());
+    // deux syntaxes différentes ici, la différence se situe dans la position des parenthèses
+    // Après une fonction on a toujours des parenthèses fucntion()  qui définissent que l'élément est une fonction déclarée
+    // Ici, pas seulement déclarée, mais aussi immédiatement exécutée ! 
+    // On utilise la plupart du temps ces fonctions anonyme au travers des évènements
+    // Un évènement lancera une portion de code, cette portion de code sera englobée dans une fonction anonyme
+    (function () {
+        return affiche("Cette fonction est exécutée automatiquement", elementChapitre10);
+    }());
 
-        (function() {
-            return affiche("Cette fonction est exécutée automatiquement", elementChapitre10);
-        })();
+    (function () {
+        return affiche("Cette fonction est exécutée automatiquement", elementChapitre10);
+    })();
 
-        // Fonction meteo 
-        function meteo(saison, temperature) {
-            let debut = "Nous sommes en " + saison;
-            let suite = " et il fait " + temperature + " degré(s)<br>";
-            return debut + suite;
+    // Fonction meteo 
+    function meteo(saison, temperature) {
+        let debut = "Nous sommes en " + saison;
+        let suite = " et il fait " + temperature + " degré(s)<br>";
+        return debut + suite;
+    }
+
+    affiche(meteo("été", 30), elementChapitre10);
+    affiche(meteo("automne", 10), elementChapitre10);
+    affiche(meteo("hiver", 1), elementChapitre10);
+    affiche(meteo("printemps", 15), elementChapitre10);
+
+    // EXERCICE : refaire la fonction météo pour gérer le "au" printemps plutôt que "en" printemps ainsi que le "s" de degré pour le mettre pour les degrés au pluriel, et ne pas le mettre pour les cas où il devrait rester au singulier 
+
+    function meteo2(saison, temperature) {
+
+        let debut;
+        // On gère bien ici le cas particulier printemps dans notre if
+        if (saison == "printemps") {
+            debut = "Nous sommes au " + saison;
+        } else {
+            debut = "Nous sommes en " + saison;
         }
 
-        affiche(meteo("été", 30), elementChapitre10);
-        affiche(meteo("automne", 10), elementChapitre10);
-        affiche(meteo("hiver", 1), elementChapitre10);
-        affiche(meteo("printemps", 15), elementChapitre10);
+        let degre;
+        // Idem pour les cas particuliers des degrés au singulier
+        if (temperature == 1 || temperature == -1 || temperature == 0) {
+            degre = " degré";
+        } else {
+            degre = " degrés";
+        }
 
-        // EXERCICE : refaire la fonction météo pour gérer le "au" printemps plutôt que "en" printemps ainsi que le "s" de degré pour le mettre pour les degrés au pluriel, et ne pas le mettre pour les cas où il devrait rester au singulier 
+        let suite = " et il fait " + temperature + degre + "<br>";
+
+        return debut + suite;
+    }
+
+    affiche("<hr>", elementChapitre10);
+    affiche(meteo2("été", 30), elementChapitre10);
+    affiche(meteo2("automne", 10), elementChapitre10);
+    affiche(meteo2("hiver", 1), elementChapitre10);
+    affiche(meteo2("printemps", 15), elementChapitre10);
 
 
+    affiche("<hr>", elementChapitre10);
 
+    function meteo3(saison, temperature) {
+        let prep = "en";
+        let s = "s";
+
+        if (saison == "printemps") {
+            prep = "au";
+        }
+
+        if (temperature >= -1 && temperature <= 1) {
+            s = "";
+        }
+
+        return "Nous sommes " + prep + " " + saison + " et il fait " + temperature + " degré" + s + "<br>";
+    }
+
+    affiche(meteo3("été", 30), elementChapitre10);
+    affiche(meteo3("automne", 10), elementChapitre10);
+    affiche(meteo3("hiver", 1), elementChapitre10);
+    affiche(meteo3("printemps", 15), elementChapitre10);
+
+    // On peut énormément raccourcir grâce notamment aux if ternaire
+    function meteo4(saison, temperature) {
+        let prep = (saison == "printemps") ? "au" : "en";
+        let s = (Math.abs(temperature) <= 1) ? "" : "s"; // Ici Math.abs me permet de récupérer la valeur absolu d'un nombre et ainsi faire une vérification plus courte 
+        return `Nous sommes ${prep} ${saison} et il fait ${temperature} degré${s}<br>`;
+    }
+
+    affiche("<hr>Avec Meteo4<hr>", elementChapitre10);
+    affiche(meteo4("été", 30), elementChapitre10);
+    affiche(meteo4("automne", 10), elementChapitre10);
+    affiche(meteo4("hiver", 1), elementChapitre10);
+    affiche(meteo4("printemps", 15), elementChapitre10);
+
+
+    // -------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
+    // ---------- CHAPITRE 11 : Tableau de données Array -----------------------
+    // -------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
+
+    let elementChapitre11 = document.getElementById("contenuChapitre11");
+
+    // Un tableau array, c'est une variable d'un nouveau type, au lieu de conserver une seule valeur, le tableau contient un ensemble de valeur 
+
+    // déclaration
+    tabFruits = ["fraise", "bananes", "", "pommes", "kiwis", "mangues"];
+
+    console.log(tabFruits);
+
+    affiche(tabFruits, elementChapitre11); // Affiche la totalité du tableau array avec les valeurs séparées par une virgule, par contre je ne peux pas l'afficher autrement
+
+    affiche("<hr>", elementChapitre11);
+
+    // Généralement on va appeler l'id qui nous intéresse à afficher 
+    affiche(tabFruits[4], elementChapitre11); // On appelle l'indice souhaité entre crochets, si je souhaite afficher kiwi, c'est l'id 4 ! 
+    // affiche(tabFruits.4, elementChapitre11); / la syntaxe point n'est pas utilisable ici 
+
+    // Pour changer une valeur d'un indice je le selectionne et y fait une affectation
+    tabFruits[4] = "peches";
+    console.log(tabFruits);
+
+    // si je veux connaitre la taille d'un tableau, tous les tableaux array possèdent la propriété "length" que je peux appeler sur n'importe quel array
+    affiche("Nombre d'éléments dans le tableau des fruits : " + tabFruits.length ,elementChapitre11)
+
+    // Il est possible d'insérer des éléments dans un array 
+
+    // Soit je peux insérer à un indice spécifique 
+    tabFruits[6] = "Prunes";  // Obligé de mettre ici un indice entre crochets, sinon syntax error
+    console.log(tabFruits);
+
+    // Sinon, j'utilise la méthode push des tableaux array 
+    // push ajoute un nouvel element en fin de tableau
+    tabFruits.push("Cerises");
+    console.log(tabFruits);
+
+    // splice est une méthode rattaché à un array, qui nous permet de supprimer des éléments dans ce array
+    // Plusieurs syntaxe possible, ci dessous on lui indique qu'à partir de l'élément id 2, il faut supprimer 3 éléments 
+    // tabFruits.splice(2, 3)
+    // console.log(tabFruits);
+
+    // unshift, ajoute un nouvel element en debut de tableau 
+    tabFruits.unshift("coco");
+    console.log(tabFruits);
+
+    // sort pour reordonner un tableau, par défaut ordre alphabétique
+    tabFruits.sort();
+    console.log(tabFruits);
+
+    // Exercice : Afficher le array tabFruits, sous forme de liste html ul li, on veut un fruit dans chaque li de notre liste (peu importe la taille du tableau, le code doit s'adapter)
 
 
 

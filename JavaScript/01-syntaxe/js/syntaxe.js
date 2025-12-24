@@ -1239,6 +1239,138 @@ document.addEventListener("DOMContentLoaded", () => {
     // EXERCICE : En faisant une boucle for of, afficher chaque élément du tableau array à plusieurs niveaux personnes (affichage libre, ul li, sur une ligne, ou n'importe)
     // le array   personnes
 
+    for (let personne of personnes) {
+        for (let valeur of personne) {
+            affiche(" - " + valeur, elementChapitre11)
+        }
+        affiche("<hr>", elementChapitre11);
+    }
+
+
+    // -------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
+    // ---------- CHAPITRE 12 : Les objets globaux -----------------------------
+    // -------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
+
+    let elementChapitre12 = document.getElementById("contenuChapitre12");
+
+    // https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects
+    // Ci dessus lien de la doc vers les objets natif de JS 
+
+    // Un objet est un conteneur virtuel qui contient des informations mais aussi des fonctionnalités qui lui sont rattachées 
+
+    // en JS, on considère que tout élément est un objet
+    // Par exemple, depuis le début du cours nous manipulons des chaines de caractères, ce sont des types string... MAIS PAS QUE ! En fait, ce sont des "objets String", cela induit que chaque string qui existe en JS possède des fonctionnalités qui lui sont rattachées 
+
+    // Tout élément en JS hérite d'un objet natif selon son type primitif et ainsi de ses propriétés et méthodes (fonctions)
+
+    // -------------------------------
+    // -- STRING 
+    // ------------------------------
+
+    // https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String
+
+    let phrase = "Bonjour je m'apelle Marie, nous sommes mercredi";
+    affiche(phrase, elementChapitre12);
+    // Cette variable contient du texte, en réalité, c'est un objet JS qui possède des méthodes et des propriétés 
+
+    // Par exemple on peut sur n'importe quel string appeler la propriété length (la taille de la chaine de caractères)
+    affiche(phrase.length, elementChapitre12);
+
+    // indexOf()
+    // indexOf() nous permet de connaitre la position d'une chaine de caractères dans une autre chaine 
+
+    // Position du mot Marie dans la phrase : 
+    console.log(phrase.indexOf("Marie")); 
+    // Ci dessus cela me retourne 20, pour position 20 (en réalité, c'est la 21eme lettre, mais je commence à compter à partir de 0 !)
+
+    // substring() 
+    // Permet de découper une chaine de caractère en fournissant une position de départ et optionnellement une position de fin 
+    let positionDepart = phrase.indexOf("Marie"); // Si je combine la position de départ du mot Marie
+    let positionFin = phrase.indexOf("Marie") + "Marie".length; // Puis que je lui ajoute la longueur du mot Marie, cela me donne la position de fin de ce mot 
+    
+    console.log(phrase.substring(positionDepart, positionFin)); // En faisant un substring avec cette position de départ et de fin, je serai capable d'extraire le mot Marie dans la phrase 
+
+    // toUpperCase() pour transformer en majuscule
+    // toLowerCase() pour transformer en minuscule 
+    let maj = "BONJOUR";
+    let min = "mardi";
+
+    console.log(maj.toLowerCase());
+    console.log(min.toUpperCase());
+
+    // Ci dessous pour mettre en majuscule uniquement la premiere lettre de la chaine min
+    console.log(min.substring(0,1).toUpperCase() + min.substring(1));
+
+    // J'englobe ce traitement dans une fonction
+    function ucFirst(chaine){
+        return chaine.substring(0,1).toUpperCase() + chaine.substring(1);
+    }
+
+    let uneChaine = "joyeux noel";
+    // Je l'appelle ici dans mon affiche
+    affiche(ucFirst(uneChaine), elementChapitre12);
+
+    let email = "unEmailPasConforme";
+    // On se sert parfois de indexOf, pas tant pour comprendre la position d'un élément mais plutôt pour savoir si un élément existe dans une chaine
+    // Par exemple une vérification d'adresse email, si le @ est bien présent ou pas
+    // En cas d'un caractère non présent dans la chaine, indexOf me retourne -1
+    console.log(email.indexOf("@"));
+
+    // -------------------------------
+    // -- MATH   pour la manipulation des number 
+    // ------------------------------
+
+    // Math.floor  pour un arrondi à l'entier inférieur
+    console.log(Math.floor(7.9));
+
+    // Math.round pour un arrondi à l'entier le plus proche
+    console.log(Math.round(7.9));
+
+    // Math.ceil pour un arrond à l'entier supérieur
+    console.log(Math.ceil(7.1));
+
+    // Math.abs pour la valeur absolue 
+    console.log(Math.abs(-10));
+
+
+    // -------------------------------
+    // -- DATE - Pour toutes les manipulations de date/heure
+    // ------------------------------
+    //  https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Date
+
+    // L'opérateur new permet de créer une instance d'un objet
+        // Ci dessous je décide de créer un objet Date
+    let today = new Date();
+
+    // Le console.log m'indique la date et heure en entier
+    console.log(today);
+
+    // Je vais être capable d'extraire certaines parties de cette date grâce aux méthodes 
+
+    console.log(today.getFullYear());
+    // getFullYear pour récupérer l'année sur 4 chiffres
+    affiche(today.getFullYear(), elementChapitre12);
+
+    // getDate pour récupérer le numéro du jour dans le mois
+    affiche(today.getDate(), elementChapitre12);
+
+    // getDay pour récupérer le numéro du jour de la semaine (0 étant dimanche)
+    affiche(today.getDay(), elementChapitre12);
+
+    tabJours = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
+
+    // getMonth pour le numéro du mois dans l'année 
+    affiche(today.getMonth(), elementChapitre12);
+
+    // Ici on affiche la date en français, 24/12/2025
+    // On teste aussi la récupération du numéro du jour dans la semaine et on le combine à notre array tabJours pour être capable de donner le jour écrit en français
+    aujourdhui = "Nous sommes " +  tabJours[today.getDay()]  + " " + today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
+
+    affiche(aujourdhui, elementChapitre12);
+
+    affiche("&copy; " + today.getFullYear(), elementChapitre12);
 
 
 
@@ -1257,4 +1389,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    });
+
+
+
+
+
+});

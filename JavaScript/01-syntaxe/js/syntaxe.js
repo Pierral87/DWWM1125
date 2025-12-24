@@ -1108,7 +1108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Un tableau array, c'est une variable d'un nouveau type, au lieu de conserver une seule valeur, le tableau contient un ensemble de valeur 
 
     // déclaration
-    tabFruits = ["fraise", "bananes", "", "pommes", "kiwis", "mangues"];
+    tabFruits = ["fraise", "bananes", "poires", "pommes", "kiwis", "mangues"];
 
     console.log(tabFruits);
 
@@ -1125,7 +1125,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(tabFruits);
 
     // si je veux connaitre la taille d'un tableau, tous les tableaux array possèdent la propriété "length" que je peux appeler sur n'importe quel array
-    affiche("Nombre d'éléments dans le tableau des fruits : " + tabFruits.length ,elementChapitre11)
+    affiche("Nombre d'éléments dans le tableau des fruits : " + tabFruits.length, elementChapitre11)
 
     // Il est possible d'insérer des éléments dans un array 
 
@@ -1153,6 +1153,91 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Exercice : Afficher le array tabFruits, sous forme de liste html ul li, on veut un fruit dans chaque li de notre liste (peu importe la taille du tableau, le code doit s'adapter)
 
+    let liste = "<ul style='width: 50%; background-color:#333333; color:white; padding: 30px;'>";
+    for (let i = 0; i < tabFruits.length; i++) {
+        liste += "<li>" + tabFruits[i] + "</li>";
+    }
+    liste += "</ul>";
+
+    affiche(liste, elementChapitre11);
+
+
+    // Autre syntaxe pour déclarer un array 
+    let unTableau = Array("Edouard", "Pierro", "Lolo");
+
+    // En JS, pas de possibilités de définir un array avec des indices en toute lettre contrairement à d'autres langages...
+    // Le choix de JS à ce sujet, est de directement passer dans un contexte objet 
+    // Ci dessous c'est un objet, avec trois propriétés, pseudo, password, email
+    // Attention ce n'est pas un array ! 
+    let unObjet = {
+        "pseudo": "pierro",
+        "password": "soleil",
+        "email": "pierro@mail.com"
+    };
+
+    console.log(unObjet);
+
+    // ---------------------------------------------------------
+    // - Tableaux Array à plusieurs niveaux : multidimensionnel-
+    // ---------------------------------------------------------
+
+    let personnes = [["Marie", "Dupont", "0102030405", "marie@gmail.com"], ["Frodon", "Sacquet", "0000000000", "bagend@mail.com"], ["Bruce", "Wayne", "0506050605", "bat@man.com"]];
+
+    console.log(personnes);
+
+    personnes = [
+        ["Marie", "Dupont", "0102030405", "marie@gmail.com"],
+        ["Frodon", "Sacquet", "0000000000", "bagend@mail.com"],
+        ["Bruce", "Wayne", "0506050605", "bat@man.com"]
+    ];
+
+    // Comment ici pourrait-on afficher Bruce ? 
+    affiche(personnes[2][0], elementChapitre11);
+    // On fait une succession de crochet pour piocher petit à petit les éléments 
+
+    let listePersonnes = "<ul style='width: 50%; background-color:#333333; color:white; padding: 30px;'>";
+    for (i = 0; i < personnes.length; i++) {
+        listePersonnes += "<ul style='width: 50%; background-color:#333333; color:white; padding: 30px;'>";
+        for (y = 0; y < personnes[i].length; y++) {
+            listePersonnes += "<li>" + personnes[i][y] + "</li>";
+        }
+        listePersonnes += "</ul>";
+    }
+    listePersonnes += "</ul>";
+
+    affiche(listePersonnes, elementChapitre11);
+
+    // ---------------------------------------------------------
+    // --- Boucle for in ---------------------------------------
+    // ---------------------------------------------------------
+    let tabJours = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"];
+    console.log(tabJours);
+
+    for (let key in tabJours) {
+        console.log(key);
+        affiche(tabJours[key], elementChapitre11);
+    }
+
+    // ici la boucle for in, nous permet à chaque tour de boucle de récupérer l'id de chaque élément du tableau array, donc d'abord 0 puis 1 puis 2 etc
+    // Cet id sera transposé dans la variable "key", je nomme moi même cette variable comme je le souhaite
+    // L'avantage de la boucle for in, c'est qu'elle comprend automatiquement le nombre de fois qu'elle doit boucler, c'est à dire pas besoin de manipuler le array.length
+
+
+    // ---------------------------------------------------------
+    // --- Boucle for of ---------------------------------------
+    // ---------------------------------------------------------
+
+    for (let value of tabJours) {
+        console.log(value);
+        affiche(value, elementChapitre11);
+    }
+
+    // Ici la boucle for of, nous permet à chaque tour de boucle de récupérer la valeur en cours, plus besoin de manipuler les id, ni même de savoir la longueur du array, elle s'occupe de tout ! 
+    // A chaque tour de boucle, elle va récupérer chaque valeur du array et les représenter dans la variable value (ici aussi je nomme cette var comme je le souhaite)
+
+
+    // EXERCICE : En faisant une boucle for of, afficher chaque élément du tableau array à plusieurs niveaux personnes (affichage libre, ul li, sur une ligne, ou n'importe)
+    // le array   personnes
 
 
 
@@ -1170,4 +1255,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-});
+
+
+    });

@@ -763,7 +763,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // }
 
 
-    // Si l'utilisateur a fait 3 essai, alors c'est terminé il a perdu ! 
+    // // Si l'utilisateur a fait 3 essai, alors c'est terminé il a perdu ! 
     //     if (essai >= 3) {
     //         alert("Perdu !");
     //         break; // L'instruction break me permet de mettre fin à l'exécution de la boucle
@@ -950,17 +950,16 @@ document.addEventListener("DOMContentLoaded", () => {
     affiche(calculTVATaux2(100), elementChapitre10);
     elementChapitre8.innerHTML += "<hr>";
 
-    // let prixUser = prompt("Saisissez un prix HT");
+    let prixUser = prompt("Saisissez un prix HT");
 
-    // let confirmTaux = confirm("Voulez vous saisir un taux différent de 20% ?");
+    let confirmTaux = confirm("Voulez vous saisir un taux différent de 20% ?");
 
-    // if (confirmTaux) {
-    //     let tauxUser = prompt("Saisissez le taux sous forme d'entier");
-    //     affiche(calculTVATaux2(prixUser, tauxUser), elementChapitre10);
-    // } else {
-    //     affiche(calculTVATaux2(prixUser), elementChapitre10);
-    // }
-
+    if (confirmTaux) {
+        let tauxUser = prompt("Saisissez le taux sous forme d'entier");
+        affiche(calculTVATaux2(prixUser, tauxUser), elementChapitre10);
+    } else {
+        affiche(calculTVATaux2(prixUser), elementChapitre10);
+    }
 
     // Selon l'endroit où est déclarée une variable ainsi que le mot clé utilisé pour définir la variable (var, let, const) celle ci pourra être accessible dans tout le script ou uniquement dans une portion du script
     // On parle ici de portée, la portée d'une variable
@@ -1018,7 +1017,19 @@ document.addEventListener("DOMContentLoaded", () => {
             return affiche("Cette fonction est exécutée automatiquement", elementChapitre10);
         })();
 
-        
+        // Fonction meteo 
+        function meteo(saison, temperature) {
+            let debut = "Nous sommes en " + saison;
+            let suite = " et il fait " + temperature + " degré(s)<br>";
+            return debut + suite;
+        }
+
+        affiche(meteo("été", 30), elementChapitre10);
+        affiche(meteo("automne", 10), elementChapitre10);
+        affiche(meteo("hiver", 1), elementChapitre10);
+        affiche(meteo("printemps", 15), elementChapitre10);
+
+        // EXERCICE : refaire la fonction météo pour gérer le "au" printemps plutôt que "en" printemps ainsi que le "s" de degré pour le mettre pour les degrés au pluriel, et ne pas le mettre pour les cas où il devrait rester au singulier 
 
 
 

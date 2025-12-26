@@ -1282,14 +1282,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // indexOf() nous permet de connaitre la position d'une chaine de caractères dans une autre chaine 
 
     // Position du mot Marie dans la phrase : 
-    console.log(phrase.indexOf("Marie")); 
+    console.log(phrase.indexOf("Marie"));
     // Ci dessus cela me retourne 20, pour position 20 (en réalité, c'est la 21eme lettre, mais je commence à compter à partir de 0 !)
 
     // substring() 
     // Permet de découper une chaine de caractère en fournissant une position de départ et optionnellement une position de fin 
     let positionDepart = phrase.indexOf("Marie"); // Si je combine la position de départ du mot Marie
     let positionFin = phrase.indexOf("Marie") + "Marie".length; // Puis que je lui ajoute la longueur du mot Marie, cela me donne la position de fin de ce mot 
-    
+
     console.log(phrase.substring(positionDepart, positionFin)); // En faisant un substring avec cette position de départ et de fin, je serai capable d'extraire le mot Marie dans la phrase 
 
     // toUpperCase() pour transformer en majuscule
@@ -1301,11 +1301,11 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(min.toUpperCase());
 
     // Ci dessous pour mettre en majuscule uniquement la premiere lettre de la chaine min
-    console.log(min.substring(0,1).toUpperCase() + min.substring(1));
+    console.log(min.substring(0, 1).toUpperCase() + min.substring(1));
 
     // J'englobe ce traitement dans une fonction
-    function ucFirst(chaine){
-        return chaine.substring(0,1).toUpperCase() + chaine.substring(1);
+    function ucFirst(chaine) {
+        return chaine.substring(0, 1).toUpperCase() + chaine.substring(1);
     }
 
     let uneChaine = "joyeux noel";
@@ -1341,7 +1341,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //  https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Date
 
     // L'opérateur new permet de créer une instance d'un objet
-        // Ci dessous je décide de créer un objet Date
+    // Ci dessous je décide de créer un objet Date
     let today = new Date();
 
     // Le console.log m'indique la date et heure en entier
@@ -1366,11 +1366,152 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Ici on affiche la date en français, 24/12/2025
     // On teste aussi la récupération du numéro du jour dans la semaine et on le combine à notre array tabJours pour être capable de donner le jour écrit en français
-    aujourdhui = "Nous sommes " +  tabJours[today.getDay()]  + " " + today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
+    aujourdhui = "Nous sommes " + tabJours[today.getDay()] + " " + today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
 
     affiche(aujourdhui, elementChapitre12);
 
     affiche("&copy; " + today.getFullYear(), elementChapitre12);
+
+
+    // -------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
+    // ---------- CHAPITRE 13 : Les objets -------------------------------------
+    // -------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
+
+    let elementChapitre13 = document.getElementById("contenuChapitre13");
+
+    // Création littérale 
+    // En utilisant les accolades 
+    // En créant un objet qui ne vient pas d'une classe spécifique
+    // C'est à dire on crée un objet essentiellement pour contenir des valeurs comme un tableau array 
+
+    let monObjet = {}; // Création d'un objet avec les {}
+    console.log(typeof (monObjet));
+
+    // Remplir l'objet en appelant de nouvelles propriétés avec le "."
+    monObjet.pseudo = "Pierra";
+    console.log(monObjet);
+    // On utilise le point depuis le début sans s'en rendre compte, mais cela fait partie de l'orienté objet de JS 
+    // Avec le point, j'appelle un élément à l'intérieur d'un objet 
+    // Attention, dans un objet on appelle pas une valeur une "variable" mais une "propriété" ! 
+    // Idem, on verra plus tard qu'il est possible qu'un objet contienne des fonctions
+    // Attention, dans un objet on appelle pas ça des fonctions mais des "méthodes"
+
+    console.log(monObjet.pseudo);
+
+    // Il est possible d'ajouter dans un objet, tout comme on le ferait avec un array
+    // Cette méthode est déconseillée ! On fait attention à ne pas mélanger les contextes !
+    // Si je suis en train de manipuler un objet, alors je poursuis avec les instructions spécifiques aux objets !
+    monObjet["email"] = "pierra@mail.com"; // A éviter ! 
+    console.log(monObjet);
+
+    // On va créer un objet complet contenant des propriétés et des méthodes 
+
+    let etudiant = {
+        nom: "",
+        prenom: "Bob",
+        age: 12,
+        competences: { // un objet dans l'objet 
+            // array dans l'objet
+            web: ["html", "css", "js", "php", "sql"],
+            design: ["photoshop", "illustrator"]
+        },
+        contact: {
+            email: "bob@leponge.fr",
+            tel: "0102030405",
+            adressePostale: {
+                ville: "BikiniBottom",
+                cp: 10000,
+                adresse: "Au fond de l'eau à côté du crabe croustillant"
+            }
+        },
+        ajouterCompetenceWeb: function (nouvelleCompetenceWeb) {
+            // this se réfère à l'objet courant
+            // l'objet en train d'être utilisé au travers de cette méthode ! Pour nous ci dessous c'est l'objet etudiant
+            // Dans une création d'objet literale (c'est à dire ne venant pas d'une classe), c'est moins nécessaire, mais on prend l'habitude d'utiliser this dès maintenant
+            // C'est une mauvaise pratique de nommer l'objet à l'intérieur de lui même, cela peut causer des redondances de programmation
+            this.competences.web.push(nouvelleCompetenceWeb);
+        },
+        ajouterCompetenceDesign: function (nouvelleCompetenceDesign) {
+            this.competences.design.push(nouvelleCompetenceDesign);
+        },
+        infos: function () {
+            return "Bonjour, je suis " + this.prenom + " " + this.nom + " vous pouvez venir me voir au resto!<hr>";
+        }
+    }
+
+    console.log(etudiant);
+    etudiant.ajouterCompetenceWeb("Bootstrap");
+    console.log(etudiant);
+
+    affiche(etudiant.infos(), elementChapitre13);
+
+    // Un objet c'est quoi, c'est un nouveau type de données !  
+    // On connait nos types primitifs, string, number, booleen
+    // A ça, se sont rajoutés les array, qui sont des variables permettant de contenir plusieurs valeurs 
+    // Ces éléments font partis de la famille de leur objet natif, c'est à dire qu'un string, est en fait un OBJET String sur lequel on a accès à des méthodes etc (idem pour les autres, number, array)
+    // En plus de ça, nous avons les objets ! Les objets que nous définissons nous même
+    // Ils peuvent contenir des valeurs ainsi que du fonctionnel que nous définissons dans la déclaration de l'objet 
+    // On utilise les objets pour rassembler des propriétés et des méthodes sur un même contexte, par exemple un panier ecommerce.
+
+    // Le but final est de définir des modèles d'objet (un peu comme un string est basé sur le modele des objets string) pour pouvoir rendre notre code générique
+
+
+    // Création d'un objet avec l'approche Class 
+
+    // Le système de Class en JS est arrivé avec EcmaScript 6 en 2015 
+    // Cette syntaxe a été rajoutée pour coller à la syntaxe dite classique d'un langage orienté objet 
+
+    class Etudiant {
+        constructor(nom, prenom, age, mail, tel, ville, cp, adresse) {
+            this.nom = nom;
+            this.prenom = prenom;
+            this.age = age;
+            this.competences = {};
+            this.contact = {};
+            this.contact.adressePostale = {};
+            this.competences.web = ["html", "css"];
+            this.competences.design = ["photoshop"];
+            this.contact.mail = mail;
+            this.contact.tel = tel;
+            this.contact.adressePostale.ville = ville;
+            this.contact.adressePostale.cp = cp;
+            this.contact.adressePostale.adresse = adresse;
+        }
+
+        infos() {
+            return "Bonjour, je suis " + this.prenom + " " + this.nom + "<hr>";
+        }
+    }
+
+    let etudiant2 = new Etudiant("Wayne", "Bruce", 40, "bat@man.com", "04444222", "Gotham City", 10000, "adresse secrète");
+
+    console.log(etudiant2);
+    affiche(etudiant2.infos(), elementChapitre13);
+
+    let etudiant3 = new Etudiant("Red", "Sacha", 12, "sacha@pk.com", "0102030405", "Bourg palette", 123546, "Chez ma mère");
+
+    console.log(etudiant3);
+    affiche(etudiant3.infos(), elementChapitre13);
+
+
+    // On peut manipuler un objet dans une const
+    const unObj = {}
+    // Lorsque l'on intéragit avec l'objet, cela n'est pas considéré comme un changement de valeur, c'est simplement une manipulation de cet élément ! C'est autorisé à l'intérieur d'une const
+    unObj.pseudo = "patate";
+    unObj.email = "potato@mail.com";
+
+    console.log(unObj);
+
+
+
+
+
+
+
+
+
 
 
 

@@ -88,8 +88,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // EXERCICE : Remettre les images dans leur position initiale lorsque l'on sort du survol avec la souris (event mouseleave)
 
+    document.querySelector("#blocImage1").addEventListener("mouseleave", function () {
+        console.log("hello je rentre sur l'image");
 
+        listeImages[0].style.top = "0px";
+        listeImages[1].style.top = "0px";
+    })
 
+    document.querySelector("#changerImage").addEventListener("click", function (event) {
 
+        // console.log(event);
+
+        event.preventDefault();
+
+        let imageEnCours = document.querySelector("#blocImage2").getAttribute("data-image");
+
+        // console.log(imageEnCours);
+        if (imageEnCours == "image1") {
+            document.querySelector("#image1").style.opacity = 0;
+            document.querySelector("#image2").style.opacity = 1;
+            document.querySelector("#blocImage2").setAttribute("data-image", 'image2');
+        } else if (imageEnCours == "image2") {
+            document.querySelector("#image2").style.opacity = 0;
+            document.querySelector("#image3").style.opacity = 1;
+            document.querySelector("#blocImage2").setAttribute("data-image", 'image3');
+        } else if (imageEnCours == "image3") {
+            document.querySelector("#image3").style.opacity = 0;
+            document.querySelector("#image4").style.opacity = 1;
+            document.querySelector("#blocImage2").setAttribute("data-image", 'image4');
+        } else if (imageEnCours == "image4") {
+            document.querySelector("#image4").style.opacity = 0;
+            document.querySelector("#image5").style.opacity = 1;
+            document.querySelector("#blocImage2").setAttribute("data-image", 'image5');
+        } else {
+            document.querySelector("#image5").style.opacity = 0;
+            document.querySelector("#image1").style.opacity = 1;
+            document.querySelector("#blocImage2").setAttribute("data-image", 'image1');
+        }
+
+    })
 
 });

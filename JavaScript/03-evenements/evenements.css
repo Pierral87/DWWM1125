@@ -42,3 +42,27 @@ img {
 #blocImage1 img:nth-child(2) {
     margin-top: -4px;
 }
+
+#blocImage2 {
+    width: 640px;
+    height: 360px;
+    overflow: hidden;
+    position: relative;
+}
+
+#blocImage2 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 640px;
+    height: 360px;
+    opacity: 0;
+}
+
+#changerImage{
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: indigo;
+    color:white;
+    text-decoration: none;
+}

@@ -1,0 +1,46 @@
+<!-- Exercice 20 - Barre de Progression de Scroll avec Footer
+
+Tags : DOM, Event Listener, Scroll
+
+Objectif : Créer une barre de progression qui suit la position de scrolling de l'utilisateur sur la page.
+
+Contexte : La boutique souhaite améliorer l'expérience utilisateur sur ses fiches produits longues. Une barre de progression visuelle permet aux clients de voir facilement leur progression dans la lecture et de savoir combien de contenu reste à découvrir.
+
+Énoncé :
+
+Créez une barre de progression qui se remplit au fur et à mesure que l'utilisateur scrolle vers le bas de la page.
+
+On a une balise footer vide, mais avec une height de 5px et couleur rouge, la width est à 0%, il va falloir faire évoluer ce 0% en fonction des valeurs de scroll de notre fenêtre -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Barre de Progression de Scroll chez PixelBay</title>
+    <style>
+        body {
+            height: 300vh;
+            /* Pour permettre le scroll */
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            background-color: #ff0000;
+            width: 0%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Faites défiler la page pour voir la barre de progression</h1>
+
+    <footer></footer>
+
+    <script>
+    </script>
+</body>
+
+</html>

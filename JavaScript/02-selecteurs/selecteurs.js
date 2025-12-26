@@ -74,6 +74,62 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(mesElemP);
 
     // Exercice : Appliquer du css sur ces balises via une boucle 
-        // Appliquez une couleur différente sur chaque p dans la boucle (bien sur notre code doit s'adapter au fait qu'il y est un nombre de p inconnu et variable)
+    // Appliquez une couleur différente sur chaque p dans la boucle (bien sur notre code doit s'adapter au fait qu'il y est un nombre de p inconnu et variable)
+
+    // James 
+    // let couleurA = Math.floor(Math.random() * 255 + 1);
+    // let couleurB = Math.floor(Math.random() * 255 + 1);
+    // let couleurC = Math.floor(Math.random() * 255 + 1);
+
+    function rgbRandom() {
+        let red = Math.floor(Math.random() * 255);
+        let green = Math.floor(Math.random() * 255);
+        let blue = Math.floor(Math.random() * 255);
+        return `rgb(${red}, ${green}, ${blue})`
+        // return "rgb(" + red + "," + green + "," + blue + ")";
+    }
+
+    // Ici meilleure solution avec le random sur du rgb, avec ça, on est sûr de tomber sur des couleurs totalement aléatoire en couvrant l'intégralité du spectre de couleurs 
+    for (let i = 0; i < mesElemP.length; i++) {
+        // let couleurA = Math.floor(Math.random() * 255);
+        // let couleurB = Math.floor(Math.random() * 255);
+        // let couleurC = Math.floor(Math.random() * 255);
+        // mesElemP[i].style.backgroundColor = `rgb(${couleurA}, ${couleurB}, ${couleurC})`;
+        mesElemP[i].style.backgroundColor = rgbRandom();
+    }
+
+    // Ci dessous une version plus "controlée" avec un array qui contient des "couleurs autorisées" et on utilise Math.random() pour tomber aléatoirement sur une de ces couleurs 
+    // hajar
+        let couleurs = ["red", "blue", "green", "orange"];
+
+    for(let i = 0; i < mesElemP.length; i++) {
+        mesElemP[i].style.color = couleurs[Math.floor(Math.random() * 3)];
+    }
+
+    // En version couleur hexadecimale 
+    // On défini un nombre à 6 chiffres, qui va prendre de l'incrémentation à chaque tour de boucle
+    // Ce qui permettra de changer la couleur à chaque tour
+    let bgColor = 533567;
+    for (let i = 0; i < mesElemP.length; i++) {
+        mesElemP[i].style.backgroundColor = "#" + bgColor;
+
+        bgColor += 3215; 
+    }
+
+    // ------------------------------------------
+    // -- SELECT AVEC querySelector() & querySelectorAll()
+    // ------------------------------------------ 
+
+    // querySelector() nous renvoie le premier élément correspondant au selecteur css mis dans les parenthèses
+    // querySelectorAll() nous renvoie tous les éléments correspondant au sélecteur css mis dans les parenthèses
+    
+    // Ci dessous, une seule selection sur la class resultat
+    let premierElementP = document.querySelector(".resultat");
+    premierElementP.style.backgroundColor = "red";
+
+    // Ci dessous, une collection (appelée NodeList ici en rapport à la différence des éléments), de tous les div et tous les p de ma page 
+    let tousLesDivEtP = document.querySelectorAll("div, p");
+    console.log("Tous les éléments div & p : " + tousLesDivEtP);
+    console.log(tousLesDivEtP);
 
 });

@@ -1,0 +1,83 @@
+<!-- Exercice 19 - Compteur de Likes pour les Jeux
+
+Tags : DOM, Event Listener
+
+Objectif : Mettre en pratique la manipulation du DOM et l'utilisation des écouteurs d'événements en JavaScript en créant un compteur de likes simple.
+
+Énoncé :
+Créez un compteur de likes qui s'incrémente à chaque clic sur un bouton.
+
+Votre tâche consiste à :
+
+    Créer un Bouton : Ajoutez une balise <button> avec l'ID button
+    Afficher le Compteur : Créez une balise où le nombre de likes sera affiché avec l'ID compteur
+    Incrémenter le Compteur : Chaque clic sur le bouton doit incrémenter le compteur -->
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Compteur de Likes chez PixelBay</title>
+</head>
+
+<style>
+    
+    *{
+        box-sizing: border-box;
+    }
+
+    .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: purple;
+        padding: 50px;
+        border: 2px solid red;
+    }
+
+    #button{
+        background-color: green;
+        
+    }
+</style>
+
+<body>
+    
+    <div class="container">
+
+        <h1> Mon compteur de like </h1>
+        
+        <!-- boutton like -->
+        <button id="button">👍🏾 j'aime</button>
+        
+        
+        <!-- compteur like -->
+        <div id="compteur"> 0 </div>
+        
+    </div>
+
+    <script>
+
+    let bouton = document.getElementById("button");
+    let afficheCompteur = document.getElementById("compteur");
+    let compteur = 0;
+
+    bouton.addEventListener("click", function(){
+        compteur++;
+
+        afficheCompteur.textContent = compteur;
+
+        // console.log("j'ai cliqué");
+    })
+        
+        
+        
+
+    
+
+
+    </script>
+</body>
+
+</html>

@@ -23,7 +23,7 @@
     <script>
 
         // Objectif ici, faire un compteur, en gros la variable durée détermine un nombre de second, on souhaite afficher un compte à rebours à l'ecran
-        
+
         // Pour ça il faut implémenter la fonction timer()
 
         // Il va falloir, basé sur la durée en second, reussir à retranscrire ça en heure et minutes et secondes restantes 
@@ -33,8 +33,63 @@
         // Arrivé à la fin du timer : on affiche un message "Terminé !"
 
 
-        let duree = 5000;
+        function timer() {
+            // Ici je récupère la durée et j'affecte sa valeur dans secondes (car la duree est défini en secondes)
+            secondes = duree;
+            minutes = 0;
+            heures = 0;
 
+            let compteur = document.querySelector("#compteur");
+
+            if (secondes < 0) { // Si mes secondes sont inférieures à 0, j'affiche le message du temps écoulé !
+                compteur.innerHTML = "Test technique : <span style='color: red;'>le temps est écoulé !</span>";
+                return; // Le return vide ici me permet de stopper l'exécution de la fonction 
+            } else { // Sinon, je dois calculer les heures et minutes à partir de ces secondes
+                // On calcule le nombre de minutes 
+                if (secondes > 59) { // S'il y a plus que 59 secondes (c'est à dire, au moins une minute)
+
+                // Explication du calcul dessous 
+                    // supposons 130 secondes       
+                        // 130 / 60  = 2.166666667   => je récupère 2 minutes entière grâce à Math.floor
+                    minutes = Math.floor(secondes / 60); // Je récupère ici les minutes entières  // 
+                    secondes = secondes - minutes * 60; // Je récupère ici les secondes restantes // 
+                        // 130 -   (2 * 60)  =  10 secondes (les secondes qu'il reste après avoir enlevé 2 minutes)
+                }
+
+                // On calcule le nombre d'heures
+                if (minutes > 59) {
+                    heures = Math.floor(minutes / 60); // Je récupère ici les heures entières
+                    minutes = minutes - heures * 60; // Je récupère ici les minutes restants 
+                }
+
+                // Ci dessous, lorsque les secondes/minutes/heures sont inférieures à 10, je voudrais concaténer la valeur avec un zero, histoire de pouvoir écrire par exemple 01:05:09
+                if (secondes < 10) {
+                    secondes = "0" + secondes;
+                }
+
+                if (minutes < 10) {
+                    minutes = "0" + minutes;
+                }
+
+                if (heures < 10) {
+                    heures = "0" + heures;
+                }
+                // Puis, j'insère dans le innerHTML la durée restante après calcule
+                compteur.innerHTML = `Test technique : <b>${heures}:${minutes}:${secondes}</b>`;
+            }
+
+            // duree = duree - 1;
+            duree--; // Je décrémente la durée à chaque passage dans cette fonction (j'enlève une seconde)
+
+            // Ici je défini un temps d'attente de 1 seconde, à chaque fois que cette seconde est écoulée, le système relance la fonction timer() et c'est reparti pour un tour qui décrémente une seconde à chaque fois
+            window.setTimeout("timer()", 1000);
+
+        }
+
+        // Définition du timer en secondes
+        let duree = 3;
+
+        // Lancement de la fonction timer()
         timer();
 
     </script>

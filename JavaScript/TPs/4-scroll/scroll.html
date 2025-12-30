@@ -40,6 +40,20 @@ On a une balise footer vide, mais avec une height de 5px et couleur rouge, la wi
     <footer></footer>
 
     <script>
+        // Pour le scroll, il faut profiter du CSS mis en place pour la balise footer
+        // On remarque dans le CSS qu'il y a un background color red, et surtout un height à 5px et un width à 0%, le but étant de réussir à prendre en compte à quelle position on se trouve du scroll de la page, pour transformer ça en % pour la width du footer 
+
+        // Selection du footer 
+
+        // Mise en place d'un évenement scroll sur le document 
+        // Et ensuite manipulation sur le body de la propriété scrollHeight comparé à innerHeight 
+            // document.body.scrollHeight    et window.innerHeight  
+        // Ensuite manipulation de scrollY sur window    window.scrollY
+
+        // Calcul du pourcentage avec un calcul entre le window.scrollY et le total Height de la page 
+
+        // Basé sur tout ça, on manipule la width du footer 
+
     </script>
 </body>
 

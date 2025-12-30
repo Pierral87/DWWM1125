@@ -52,22 +52,92 @@ Nouvelles instructions JS à découvrir : createElement et appendChild
     <div id="calendar" class="calendar"></div>
 
     <script>
+
+        // Ci dessous le array que l'on souhaite afficher, élément par élément
         const games = [
-            { month: "Janvier", game: "Cyber Race", description: "Jeu de course futuriste" },
-            { month: "Février", game: "Pixel Quest", description: "RPG rétro-classique" },
-            { month: "Mars", game: "Block Master", description: "Puzzle addictif" },
-            { month: "Avril", game: "Sky Pilot", description: "Simulateur de vol" },
-            { month: "Mai", game: "Dungeon Crawl", description: "Action-aventure" },
-            { month: "Juin", game: "Mystic Lands", description: "Jeu d'exploration" },
-            { month: "Juillet", game: "Battle Arena", description: "Combat en 1v1" },
-            { month: "Août", game: "Escape Room", description: "Jeu de réflexion" },
-            { month: "Septembre", game: "Neural Rush", description: "Jeu d'arcade" },
-            { month: "Octobre", game: "Horror House", description: "Jeu d'horreur" },
-            { month: "Novembre", game: "Festival Games", description: "Mini-jeux variés" },
-            { month: "Décembre", game: "Winter Sports", description: "Jeux d'hiver" }
+            { month: "Janvier", title: "Cyber Race", description: "Jeu de course futuriste" },
+            { month: "Février", title: "Pixel Quest", description: "RPG rétro-classique" },
+            { month: "Mars", title: "Block Master", description: "Puzzle addictif" },
+            { month: "Avril", title: "Sky Pilot", description: "Simulateur de vol" },
+            { month: "Mai", title: "Dungeon Crawl", description: "Action-aventure" },
+            { month: "Juin", title: "Mystic Lands", description: "Jeu d'exploration" },
+            { month: "Juillet", title: "Battle Arena", description: "Combat en 1v1" },
+            { month: "Août", title: "Escape Room", description: "Jeu de réflexion" },
+            { month: "Septembre", title: "Neural Rush", description: "Jeu d'arcade" },
+            { month: "Octobre", title: "Horror House", description: "Jeu d'horreur" },
+            { month: "Novembre", title: "Festival Games", description: "Mini-jeux variés" },
+            { month: "Décembre", title: "Winter Sports", description: "Jeux d'hiver" }
         ];
 
-        const calendar = document.getElementById("calendar");
+        // Ici la sélection de mon div calendar dans lequel tout apparaitra
+        const calendar = document.querySelector("#calendar");
+
+        // On va parcourir le array avec une boucle dans le but de créer un élément à chaque tour
+
+        // Ici chaque tour de ma boucle for of, récupère un game parmis les games 
+        for (let game of games) {
+
+            // Création des éléments 
+
+            // Je commence par créer un élément div 
+                // Lorsque j'appelle createElement, cela va créer l'élément div entier, c'est à dire la balise ouvrante et fermante <div></div>
+                // ATTENTION la balise est créée mais pas affichée tant que je n'ai pas appelé appendChild
+            const monthDiv = document.createElement("div"); // je crée un div
+            monthDiv.classList.add("month"); // Je lui ajoute la classe month (en rapport avec notre css)
+            console.log(monthDiv);
+
+            const h3 = document.createElement("h3"); // Je crée un élément h3
+            h3.innerText = game.month; // Je lui rajoute du contenu text à savoir, le month du game
+            console.log(h3);
+
+            const gameTitle = document.createElement("p"); // Je crée un élément p
+            gameTitle.innerText = game.title; // Je lui rajoute du contenu text à savoir le title
+            gameTitle.style.fontWeight = "bold"; // Je lui mets aussi du style écriture en gras
+            console.log(gameTitle);
+
+            const description = document.createElement("p"); // Je crée un élément p
+            description.innerText = game.description; // Je lui rajoute du contenu text à savoir la descrpition
+            console.log(description);
+
+            monthDiv.appendChild(h3); // J'insère le h3 dans le div du mois
+            monthDiv.appendChild(gameTitle); // J'insère le p title dans le div du mois
+            monthDiv.appendChild(description); // J'insère le p description dans le div du mois
+
+            calendar.appendChild(monthDiv); // J'insère le div du mois (maintenant rempli de son contenu) dans le div calendar, l'affiche intervient uniquement à ce niveau ! Car on appendChild dans un élément actuellement existant de notre page HTML.
+            // Les éléments créés avant ça, sont en quelque sorte stockés dans la mémoire du navigateur (en attendant d'être appelé dans un élément existant dans le html pour s'afficher)
+        }
+
+
+        // for (let i = 0; i < games.length; i++) {
+        //     console.log(games[i]);
+
+
+        //     // Création des éléments
+        //     const monthDiv = document.createElement("div");
+        //     monthDiv.classList.add("month");
+        //     console.log(monthDiv);
+
+        //     const h3 = document.createElement("h3");
+        //     h3.innerText = games[i].month;
+        //     console.log(h3);
+
+        //     const gameTitle = document.createElement("p");
+        //     gameTitle.innerText = games[i].title;
+        //     gameTitle.style.fontWeight = "bold";
+        //     console.log(gameTitle);
+
+        //     const description = document.createElement("p");
+        //     description.innerText = games[i].description;
+        //     console.log(description);
+
+
+        //     monthDiv.appendChild(h3);
+        //     monthDiv.appendChild(gameTitle);
+        //     monthDiv.appendChild(description);
+
+        //     calendar.appendChild(monthDiv);
+
+        // }
 
 
     </script>

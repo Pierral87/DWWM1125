@@ -25,6 +25,25 @@ Votre tâche consiste à :
     <button id="button"><span id="compteur">👍 Like </span></button>
 
     <script>
+        // Selection des éléments de la page
+        // Le button pour pouvoir ajouter l'event de click
+        let button = document.querySelector("#button");
+        // Le compteur pour pouvoir ajouter le nombre de like
+        let compteur = document.querySelector("#compteur");
+        // Une variable count pour compter le nombre de click, par défaut à 0 
+        let count = 0;
+
+        function addOne() { // Ici la fonction qui gère le compteur et le contenu texte du compteur
+            // console.log("function addOne");
+            // console.log(count);
+            count++; // Incrémentation du count
+            // console.log(count);
+            // Ci dessous, remplacement du innerText du span compteur, avec le count concaténé de Like au singulier ou au pluriel en fonction du nombre de likes
+            compteur.innerText = count  + ( count == 1 ? " 👍 Like" : " 👍 Likes");
+        }
+
+        // Lors du click on lancera la fonction addOne
+        button.addEventListener("click", addOne);
 
         
     </script>

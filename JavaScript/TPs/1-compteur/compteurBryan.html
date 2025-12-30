@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compteur (timer)</title>
+    <style>
+        #compteur {
+            background-color: #333333;
+            color: white;
+            padding: 70px;
+            font-size: 42px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="compteur">Test technique : </div>
+    <hr>
+
+    <script>
+
+        // Objectif ici, faire un compteur, en gros la variable durée détermine un nombre de second, on souhaite afficher un compte à rebours à l'ecran
+
+        // Pour ça il faut implémenter la fonction timer()
+
+        // Il va falloir, basé sur la durée en second, reussir à retranscrire ça en heure et minutes et secondes restantes 
+
+        // A chaque fois il faudra créer un timer de 1 seconde et soustraire 1 à la durée 
+
+        // Arrivé à la fin du timer : on affiche un message "Terminé !"
+
+
+        let duree = 5000;
+
+        // const diviser = (durée, b = 3600) => {
+        //     return durée / b;
+        // }
+
+        // const time = diviser(duree);
+
+        // let minutes = time * 60;
+        const timerElement = document.getElementById("compteur");
+
+        setInterval(() => {
+            let heures = parseInt(duree / 60 / 60, 10)
+            let minutes = parseInt(duree / 60 % 60, 10);
+            let secondes = parseInt(duree % 60, 10);
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            secondes = secondes < 10 ? "0" + secondes : secondes;
+            timerElement.innerText = `${minutes}:${secondes}`;
+            duree = duree <= 0 ? 0 : duree - 1;
+        }, 1000);
+
+        let message = "Terminé !";
+        if (secondes === 0) {
+            timerElement.innerText = message;
+        }
+
+    </script>
+</body>
+
+</html>

@@ -6,4 +6,14 @@
 
     Par exemple affichage d'un message d'erreur en direct,  bordure rouge sur l'input, texte en rouge ou autre chose 
 
+    // Peu importe la taille du formulaire (nombre de champs)
+        // On appliquera généralement soit des évènement keydown pour faire des contrôles de valeur EN COURS DE SAISIE ! 
+        // C'est à dire, à chaque fois que sur par exemple un input pseudo, j'ai un evenement keydown, je vais récupérer la value du champ  donc  this.value   et vérifier sa length 
+        // Via une condition je vérifie la valeur de length et soit j'affiche un message d'erreur soit un message OK (ou rien) pour indiquer que la saisie est bonne ou mauvaise 
+        // Je peux le gérer avec un innerHTML 
+
+
+        // Ou sinon/également lorsqu'on a un event submit sur le form, on va faire un preventDefault avant d'envoyer le formulaire pour éviter qu'il s'envoie avec de mauvaises informations
+        // On peut aussi si on le souhaite appliquer les controles seulement une fois que le form est envoyé, mais c'est mieux de les montrer à l'utilisateur en direct 
+
 -->

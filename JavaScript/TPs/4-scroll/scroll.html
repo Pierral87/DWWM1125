@@ -47,12 +47,25 @@ On a une balise footer vide, mais avec une height de 5px et couleur rouge, la wi
 
         // Mise en place d'un évenement scroll sur le document 
         // Et ensuite manipulation sur le body de la propriété scrollHeight comparé à innerHeight 
-            // document.body.scrollHeight    et window.innerHeight  
+        // document.body.scrollHeight    et window.innerHeight  
         // Ensuite manipulation de scrollY sur window    window.scrollY
 
         // Calcul du pourcentage avec un calcul entre le window.scrollY et le total Height de la page 
 
         // Basé sur tout ça, on manipule la width du footer 
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const footer = document.querySelector("footer");
+
+            document.addEventListener("scroll", function () {
+                let scrollTotalHeight = document.body.scrollHeight - window.innerHeight;
+                let scrollCurrentPosition = window.scrollY;
+                let scrollPercentage = (scrollCurrentPosition / scrollTotalHeight) * 100;
+
+                footer.style.width = `${scrollPercentage}%`;
+            });
+        });
+
 
     </script>
 </body>
